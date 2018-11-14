@@ -100,7 +100,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/07/28/Tensorflow实现XOR/index.html">
 <meta property="og:site_name" content="今際の国">
 <meta property="og:description" content="一、TensorFlow基础1、概念 TF使用图表示计算任务，图包括数据（Data）、流（Flow）、图（Graph） 图中节点称为op，一个op获得多个Tensor Tensor为张量，TF中用到的数据都是Tensor 图必须在会话中启动  示例 计算两个矩阵的乘积， 12345678x = tf.constant([[1.0,2.0,3.0],[1.0,2.0,3.0],[1.0,2.0,3.">
-<meta property="og:updated_time" content="2018-11-14T17:57:04.000Z">
+<meta property="og:updated_time" content="2018-11-14T18:06:01.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow实现XOR">
 <meta name="twitter:description" content="一、TensorFlow基础1、概念 TF使用图表示计算任务，图包括数据（Data）、流（Flow）、图（Graph） 图中节点称为op，一个op获得多个Tensor Tensor为张量，TF中用到的数据都是Tensor 图必须在会话中启动  示例 计算两个矩阵的乘积， 12345678x = tf.constant([[1.0,2.0,3.0],[1.0,2.0,3.0],[1.0,2.0,3.">
@@ -359,7 +359,7 @@
 <p>代码</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">x = tf.constant([[1.0,2.0],[3.0,4.0]],dtype=tf.float32,shape=[2,2])</div><div class="line">tf.reduce_mean(x) ==&gt; 2.5</div><div class="line">tf.reduce_mean(x, 0) ==&gt; [2. 3.]</div><div class="line">tf.reduce_mean(x, 1) ==&gt; [1.5 3.5]</div></pre></td></tr></table></figure>
 <p><strong>(5) 优化器</strong></p>
-<p><code>tf.train.GradientDescentOptimizer</code>是实现梯度下降算法的优化器。</p>
+<p><code>tf.train.GradientDescentOptimizer</code>是实现<code>梯度下降</code>算法的优化器。</p>
 <h3 id="二、机器学习、深度学习概念"><a href="#二、机器学习、深度学习概念" class="headerlink" title="二、机器学习、深度学习概念"></a>二、机器学习、深度学习概念</h3><p>1、<strong>代价函数</strong></p>
 <p>整个训练集上所有样本误差的平均。</p>
 <p>2、<strong>目标函数</strong></p>
@@ -422,6 +422,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/15/k-近邻算法/" rel="prev" title="k-近邻算法">
+                k-近邻算法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -493,7 +497,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -506,7 +510,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
