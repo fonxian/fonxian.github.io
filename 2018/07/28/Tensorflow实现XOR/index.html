@@ -101,7 +101,7 @@
 <meta property="og:site_name" content="今際の国">
 <meta property="og:description" content="一、TensorFlow基础1、概念 TF使用图表示计算任务，图包括数据（Data）、流（Flow）、图（Graph） 图中节点称为op，一个op获得多个Tensor Tensor为张量，TF中用到的数据都是Tensor 图必须在会话中启动  示例 计算两个矩阵的乘积， 12345678x = tf.constant([[1.0,2.0,3.0],[1.0,2.0,3.0],[1.0,2.0,3.">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/gwmp8l72zy.png">
-<meta property="og:updated_time" content="2018-11-16T15:03:44.000Z">
+<meta property="og:updated_time" content="2018-11-16T16:33:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow实现XOR">
 <meta name="twitter:description" content="一、TensorFlow基础1、概念 TF使用图表示计算任务，图包括数据（Data）、流（Flow）、图（Graph） 图中节点称为op，一个op获得多个Tensor Tensor为张量，TF中用到的数据都是Tensor 图必须在会话中启动  示例 计算两个矩阵的乘积， 12345678x = tf.constant([[1.0,2.0,3.0],[1.0,2.0,3.0],[1.0,2.0,3.">
@@ -368,6 +368,17 @@
 <p>经过优化后，期望获得的函数。</p>
 <p>3、<strong>激活函数</strong></p>
 <p>负责将神经元的输入映射到输出端。增加神经网络模型的<code>非线性</code>。</p>
+<p>激活函数几种常见类型：</p>
+<ul>
+<li>sigmod函数</li>
+</ul>
+<blockquote>
+<p><code>$f(x) = 1/(1+e^x)$</code></p>
+</blockquote>
+<ul>
+<li>tanh函数</li>
+<li>Relu函数</li>
+</ul>
 <p>4、<strong>学习率</strong></p>
 <p>学习率决定<code>参数</code>移动到<code>最优值</code>的<code>速度</code>快慢。学习率过大，会越过<code>最优值</code>。学习率过小，优化<code>效率低</code>。</p>
 <p>5、<strong>前向传播（Forward Propagation）</strong></p>
