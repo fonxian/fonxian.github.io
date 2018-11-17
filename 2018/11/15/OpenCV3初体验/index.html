@@ -102,7 +102,7 @@
 <meta property="og:description" content="一、OpenCV基础1、基本I/O操作1234567891011import cv2# 打开图片img = cv2.imread(&apos;lion.jpg&apos;)# 显示图片img = cv2.imshow(&apos;lion&apos;,&apos;lion.jpg&apos;)# 保存图片cv2.imwrite(&apos;lion2.jpg&apos;,img) 2、灰度处理3、二值化4、归一化二、有趣的例子1、边缘检测Canny边缘检测 代码 12345i">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/8z3umaunrb.jpeg">
-<meta property="og:updated_time" content="2018-11-17T19:44:19.000Z">
+<meta property="og:updated_time" content="2018-11-17T19:47:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenCV 初体验">
 <meta name="twitter:description" content="一、OpenCV基础1、基本I/O操作1234567891011import cv2# 打开图片img = cv2.imread(&apos;lion.jpg&apos;)# 显示图片img = cv2.imshow(&apos;lion&apos;,&apos;lion.jpg&apos;)# 保存图片cv2.imwrite(&apos;lion2.jpg&apos;,img) 2、灰度处理3、二值化4、归一化二、有趣的例子1、边缘检测Canny边缘检测 代码 12345i">
@@ -338,8 +338,20 @@
 <h4 id="2、灰度处理"><a href="#2、灰度处理" class="headerlink" title="2、灰度处理"></a>2、灰度处理</h4><h4 id="3、二值化"><a href="#3、二值化" class="headerlink" title="3、二值化"></a>3、二值化</h4><h4 id="4、归一化"><a href="#4、归一化" class="headerlink" title="4、归一化"></a>4、归一化</h4><h3 id="二、有趣的例子"><a href="#二、有趣的例子" class="headerlink" title="二、有趣的例子"></a>二、有趣的例子</h3><h4 id="1、边缘检测"><a href="#1、边缘检测" class="headerlink" title="1、边缘检测"></a>1、边缘检测</h4><p><strong>Canny边缘检测</strong></p>
 <p>代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line">cv2.imwrite(<span class="string">'wsc1.jpeg'</span>,cv2.Canny(img,<span class="number">200</span>,<span class="number">300</span>))</div></pre></td></tr></table></figure>
-<p>图片处理前、图片处理后</p>
-<p><img src="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg" width="150" height="150" alt="wsc图片处理前"> <img src="https://ask.qcloudimg.com/draft/1436590/8z3umaunrb.jpeg" width="150" height="150" alt="wsc图片处理后"></p>
+<table border="1">
+  <tr>
+    <th>图片处理前</th>
+    <th>图片处理后</th>
+  </tr>
+  <tr>
+    <td><img src="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg" width="150" height="150" alt="wsc图片处理前"></td>
+    <td><img src="https://ask.qcloudimg.com/draft/1436590/8z3umaunrb.jpeg" width="150" height="150" alt="wsc图片处理后"></td>
+  </tr>
+</table>
+
+
+
+
 <p>2、人脸检测</p>
 
       
