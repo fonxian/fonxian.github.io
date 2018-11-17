@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/11/15/k-近邻算法/">
+    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/11/15/OpenCV3初体验/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fonxian">
@@ -286,7 +286,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/15/k-近邻算法/" itemprop="url">k-近邻算法</a></h1>
+                <a class="post-title-link" href="/2018/11/15/OpenCV3初体验/" itemprop="url">OpenCV 初体验</a></h1>
         
 
         <div class="post-meta">
@@ -335,7 +335,13 @@
       
         
           
-            <h3 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h3><p>对于输入向量x，取与之最近的k个向量，k个向量中标签值占比最大的，为向量x的标签值。</p>
+            <h3 id="一、OpenCV基础"><a href="#一、OpenCV基础" class="headerlink" title="一、OpenCV基础"></a>一、OpenCV基础</h3><h4 id="1、基本I-O操作"><a href="#1、基本I-O操作" class="headerlink" title="1、基本I/O操作"></a>1、基本I/O操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 打开图片</span></div><div class="line">img = cv2.imread(<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 显示图片</span></div><div class="line">img = cv2.imshow(<span class="string">'lion'</span>,<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 保存图片</span></div><div class="line">cv2.imwrite(<span class="string">'lion2.jpg'</span>,img)</div></pre></td></tr></table></figure>
+<h4 id="2、灰度处理"><a href="#2、灰度处理" class="headerlink" title="2、灰度处理"></a>2、灰度处理</h4><h4 id="3、二值化"><a href="#3、二值化" class="headerlink" title="3、二值化"></a>3、二值化</h4><h4 id="4、归一化"><a href="#4、归一化" class="headerlink" title="4、归一化"></a>4、归一化</h4><h3 id="二、有趣的例子"><a href="#二、有趣的例子" class="headerlink" title="二、有趣的例子"></a>二、有趣的例子</h3><h4 id="1、边缘检测"><a href="#1、边缘检测" class="headerlink" title="1、边缘检测"></a>1、边缘检测</h4><p><strong>Canny边缘检测</strong></p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line">cv2.imwrite(<span class="string">'wsc1.jpeg'</span>,cv2.Canny(img,<span class="number">200</span>,<span class="number">300</span>))</div></pre></td></tr></table></figure>
+<p>图片处理前、图片处理后</p>
+<p><img src="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg" width="150" height="150" alt="wsc图片处理前"> <img src="https://ask.qcloudimg.com/draft/1436590/8z3umaunrb.jpeg" width="150" height="150" alt="wsc图片处理后"></p>
+<p>2、人脸检测</p>
 
           
         
@@ -550,7 +556,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2017/06/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2017/06/02/Hexo搭建博客/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fonxian">
@@ -569,7 +575,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/06/02/hello-world/" itemprop="url">Hexo搭建博客及管理维护</a></h1>
+                <a class="post-title-link" href="/2017/06/02/Hexo搭建博客/" itemprop="url">Hexo搭建博客及管理维护</a></h1>
         
 
         <div class="post-meta">
@@ -629,6 +635,11 @@
 <h3 id="Github上创建库"><a href="#Github上创建库" class="headerlink" title="Github上创建库"></a>Github上创建库</h3><p>格式为“自定义名字.github.io”，如xxx.github.io</p>
 <h3 id="修改-config-yml文件"><a href="#修改-config-yml文件" class="headerlink" title="修改_config.yml文件"></a>修改_config.yml文件</h3><p>注意用vim编辑时，注意键值之间的空格（键+“：”+空格+值，若键高亮，则说明有效）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">     <span class="built_in">type</span>: git</div><div class="line">     repo: https://github.com/xxx/xxx.github.io.git</div><div class="line">     branch: master</div></pre></td></tr></table></figure>
+<h3 id="保留CNAME文件"><a href="#保留CNAME文件" class="headerlink" title="保留CNAME文件"></a>保留CNAME文件</h3><p>安装插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ npm install hexo-generator-cname --save //安装此插件实现</div></pre></td></tr></table></figure>
+<p>修改_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">url: http://www.coffejoy.com</div><div class="line">Plugins:</div><div class="line">  hexo-generator-cname</div></pre></td></tr></table></figure>
+<p><code>hexo -g</code>、<code>hexo -d</code>，之后，Github上会生成一个内容为www.coffejoy.com的CNAME文件</p>
 
           
         
