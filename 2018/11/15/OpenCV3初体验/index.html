@@ -93,24 +93,26 @@
 
 
 
-<meta name="description" content="一、OpenCV基础1、基本I/O操作1234567891011#-*- coding: utf-8 -*-import cv2# 打开图片img = cv2.imread(&apos;lion.jpg&apos;)# 显示图片img = cv2.imshow(&apos;lion&apos;,&apos;lion.jpg&apos;)# 保存图片cv2.imwrite(&apos;lion2.jpg&apos;,img) 2、灰度、二值化处理1234567891011121">
+<meta name="description" content="本文简单地介绍计算机图形处理的一些基本概念，以及一些有趣的例子和对应的Open CV的代码操作。 一、OpenCV基础Open CV是一个开源的计算机视觉库，采用C/C++编写，提供Python、MATLAB以及其他语言的接口。 1、基本I/O操作1234567891011#-*- coding: utf-8 -*-import cv2# 打开图片img = cv2.imread(&apos;lion.jp">
 <meta name="keywords" content="MachineLearning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OpenCV 初体验">
 <meta property="og:url" content="http://www.coffejoy.com/2018/11/15/OpenCV3初体验/index.html">
 <meta property="og:site_name" content="今際の国">
-<meta property="og:description" content="一、OpenCV基础1、基本I/O操作1234567891011#-*- coding: utf-8 -*-import cv2# 打开图片img = cv2.imread(&apos;lion.jpg&apos;)# 显示图片img = cv2.imshow(&apos;lion&apos;,&apos;lion.jpg&apos;)# 保存图片cv2.imwrite(&apos;lion2.jpg&apos;,img) 2、灰度、二值化处理1234567891011121">
+<meta property="og:description" content="本文简单地介绍计算机图形处理的一些基本概念，以及一些有趣的例子和对应的Open CV的代码操作。 一、OpenCV基础Open CV是一个开源的计算机视觉库，采用C/C++编写，提供Python、MATLAB以及其他语言的接口。 1、基本I/O操作1234567891011#-*- coding: utf-8 -*-import cv2# 打开图片img = cv2.imread(&apos;lion.jp">
+<meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/woqsy3jcz6.jpg">
+<meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/d113x17msg.jpg">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/8z3umaunrb.jpeg">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/byo30dqg0u.jpeg">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/lonx4ht2tx.jpeg">
-<meta property="og:updated_time" content="2018-11-17T20:36:41.000Z">
+<meta property="og:updated_time" content="2018-11-17T20:59:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenCV 初体验">
-<meta name="twitter:description" content="一、OpenCV基础1、基本I/O操作1234567891011#-*- coding: utf-8 -*-import cv2# 打开图片img = cv2.imread(&apos;lion.jpg&apos;)# 显示图片img = cv2.imshow(&apos;lion&apos;,&apos;lion.jpg&apos;)# 保存图片cv2.imwrite(&apos;lion2.jpg&apos;,img) 2、灰度、二值化处理1234567891011121">
-<meta name="twitter:image" content="https://ask.qcloudimg.com/draft/1436590/woqsy3jcz6.jpg">
+<meta name="twitter:description" content="本文简单地介绍计算机图形处理的一些基本概念，以及一些有趣的例子和对应的Open CV的代码操作。 一、OpenCV基础Open CV是一个开源的计算机视觉库，采用C/C++编写，提供Python、MATLAB以及其他语言的接口。 1、基本I/O操作1234567891011#-*- coding: utf-8 -*-import cv2# 打开图片img = cv2.imread(&apos;lion.jp">
+<meta name="twitter:image" content="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg">
 
 
 
@@ -338,15 +340,25 @@
       
 
       
-        <h3 id="一、OpenCV基础"><a href="#一、OpenCV基础" class="headerlink" title="一、OpenCV基础"></a>一、OpenCV基础</h3><h4 id="1、基本I-O操作"><a href="#1、基本I-O操作" class="headerlink" title="1、基本I/O操作"></a>1、基本I/O操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 打开图片</span></div><div class="line">img = cv2.imread(<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 显示图片</span></div><div class="line">img = cv2.imshow(<span class="string">'lion'</span>,<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 保存图片</span></div><div class="line">cv2.imwrite(<span class="string">'lion2.jpg'</span>,img)</div></pre></td></tr></table></figure>
+        <p>本文简单地介绍计算机图形处理的一些基本概念，以及一些有趣的例子和对应的Open CV的代码操作。</p>
+<h3 id="一、OpenCV基础"><a href="#一、OpenCV基础" class="headerlink" title="一、OpenCV基础"></a>一、OpenCV基础</h3><p>Open CV是一个开源的计算机视觉库，采用C/C++编写，提供Python、MATLAB以及其他语言的接口。</p>
+<h4 id="1、基本I-O操作"><a href="#1、基本I-O操作" class="headerlink" title="1、基本I/O操作"></a>1、基本I/O操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 打开图片</span></div><div class="line">img = cv2.imread(<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 显示图片</span></div><div class="line">img = cv2.imshow(<span class="string">'lion'</span>,<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 保存图片</span></div><div class="line">cv2.imwrite(<span class="string">'lion2.jpg'</span>,img)</div></pre></td></tr></table></figure>
 <h4 id="2、灰度、二值化处理"><a href="#2、灰度、二值化处理" class="headerlink" title="2、灰度、二值化处理"></a>2、灰度、二值化处理</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2  </div><div class="line"></div><div class="line"><span class="comment"># 读取图片</span></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度化处理、保存处理后文件</span></div><div class="line">img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)</div><div class="line">cv2.imwrite(<span class="string">'wsc-gray.jpg'</span>,img)</div><div class="line"></div><div class="line"><span class="comment"># 二值化处理、保存处理后文件</span></div><div class="line">cv2.threshold(image, <span class="number">550</span>, <span class="number">550</span>, <span class="number">0</span>, image) </div><div class="line">cv2.imwrite(<span class="string">'wsc-two-value.jpg'</span>,img)</div></pre></td></tr></table></figure>
-<table border="1">
+<table border="0">
   <tr>
+    <th>图片处理前</th>
     <th>灰度处理</th>
+  </tr>
+  <tr>
+    <td><img src="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg" width="300" height="300" alt="wsc图片处理前"></td>
+    <td><img src="https://ask.qcloudimg.com/draft/1436590/woqsy3jcz6.jpg" width="300" height="300" alt="wsc图片处理前"></td>
+  </tr>
+  <tr>
+    <th>图片处理前</th>
     <th>二值处理</th>
   </tr>
   <tr>
-    <td><img src="https://ask.qcloudimg.com/draft/1436590/woqsy3jcz6.jpg" width="300" height="300" alt="wsc图片处理前"></td>
+    <td><img src="https://ask.qcloudimg.com/draft/1436590/pmz1s26iw4.jpeg" width="300" height="300" alt="wsc图片处理前"></td>
     <td><img src="https://ask.qcloudimg.com/draft/1436590/d113x17msg.jpg" width="300" height="300" alt="wsc图片处理后"></td>
   </tr>
 </table>
@@ -354,7 +366,7 @@
 <h3 id="二、有趣的例子"><a href="#二、有趣的例子" class="headerlink" title="二、有趣的例子"></a>二、有趣的例子</h3><h4 id="1、边缘检测"><a href="#1、边缘检测" class="headerlink" title="1、边缘检测"></a>1、边缘检测</h4><p><strong>Canny边缘检测</strong></p>
 <p>代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 读取图片</span></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># Canny边缘检测处理，并写入图片</span></div><div class="line">cv2.imwrite(<span class="string">'wsc1.jpeg'</span>,cv2.Canny(img,<span class="number">200</span>,<span class="number">300</span>))</div></pre></td></tr></table></figure>
-<table border="1">
+<table border="0">
   <tr>
     <th>图片处理前</th>
     <th>图片处理后</th>
@@ -366,12 +378,10 @@
 </table>
 
 
-
-
-<p>2、人脸检测</p>
-<p><code>haarcascade_frontalface_default.xml</code>,文件可在OpenCV的<a href="https://github.com/opencv/opencv/tree/master/data/haarcascades" target="_blank" rel="external">Github</a>上下载。</p>
+<p> 拓展：检测到边缘后，给思聪换个背景。</p>
+<h4 id="2、人脸检测"><a href="#2、人脸检测" class="headerlink" title="2、人脸检测"></a>2、人脸检测</h4><p><code>haarcascade_frontalface_default.xml</code>,该文件为人脸检测器（默认）文件，文件可在OpenCV的<a href="https://github.com/opencv/opencv/tree/master/data/haarcascades" target="_blank" rel="external">Github</a>上下载。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">detect</span><span class="params">(filename)</span>:</span></div><div class="line"></div><div class="line">    face_cascade = cv2.CascadeClassifier(<span class="string">'./data/haarcascades/haarcascade_frontalface_default.xml'</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 读取图片</span></div><div class="line">    img = cv2.imread(filename)</div><div class="line"></div><div class="line">    <span class="comment"># 图片灰度处理</span></div><div class="line">    gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)</div><div class="line"></div><div class="line">    <span class="comment"># 人脸检测,每次迭代图像压缩率、人脸矩形保留近邻数目最小值</span></div><div class="line">    faces = face_cascade.detectMultiScale(gray,<span class="number">1.3</span>,<span class="number">6</span>)</div><div class="line"></div><div class="line">    <span class="comment"># x,y为左上角坐标，w,h表示人脸宽度和高度</span></div><div class="line">    <span class="keyword">for</span>(x,y,w,h) <span class="keyword">in</span> faces:</div><div class="line">        <span class="comment"># 检测到人脸绘制成蓝色矩形</span></div><div class="line">        img = cv2.rectangle(img,(x,y),(x+w,y+h),(<span class="number">255</span>,<span class="number">0</span>,<span class="number">0</span>),<span class="number">2</span>)</div><div class="line"></div><div class="line">    <span class="comment"># 写入文件</span></div><div class="line">    cv2.imwrite(<span class="string">'/Users/fangzhijie/Pictures/ig1.jpeg'</span>,img)</div><div class="line"></div><div class="line">filename = <span class="string">'ig.jpeg'</span></div><div class="line">detect(filename)</div></pre></td></tr></table></figure>
-<table border="1">
+<table border="0">
   <tr>
     <th>图片处理前</th>
   </tr>
@@ -385,6 +395,9 @@
     <td><img src="https://ask.qcloudimg.com/draft/1436590/lonx4ht2tx.jpeg" width="500" height="350" alt="wsc图片处理前"></td>
   </tr>
 </table>
+
+<p>剩下的三位没有识别出来，目前还在找原因。</p>
+
       
     </div>
 
@@ -554,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、OpenCV基础"><span class="nav-number">1.</span> <span class="nav-text">一、OpenCV基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、基本I-O操作"><span class="nav-number">1.1.</span> <span class="nav-text">1、基本I/O操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、灰度、二值化处理"><span class="nav-number">1.2.</span> <span class="nav-text">2、灰度、二值化处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、有趣的例子"><span class="nav-number">2.</span> <span class="nav-text">二、有趣的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、边缘检测"><span class="nav-number">2.1.</span> <span class="nav-text">1、边缘检测</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、OpenCV基础"><span class="nav-number">1.</span> <span class="nav-text">一、OpenCV基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、基本I-O操作"><span class="nav-number">1.1.</span> <span class="nav-text">1、基本I/O操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、灰度、二值化处理"><span class="nav-number">1.2.</span> <span class="nav-text">2、灰度、二值化处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、有趣的例子"><span class="nav-number">2.</span> <span class="nav-text">二、有趣的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、边缘检测"><span class="nav-number">2.1.</span> <span class="nav-text">1、边缘检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、人脸检测"><span class="nav-number">2.2.</span> <span class="nav-text">2、人脸检测</span></a></li></ol></li></ol></div>
             
 
           </div>
