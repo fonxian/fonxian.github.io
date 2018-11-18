@@ -336,7 +336,20 @@
         
           
             <p>本文简单地介绍计算机图形处理的一些基本概念，以及一些有趣的例子和对应的Open CV的代码操作。</p>
-<h3 id="一、OpenCV基础"><a href="#一、OpenCV基础" class="headerlink" title="一、OpenCV基础"></a>一、OpenCV基础</h3><p>Open CV是一个开源的计算机视觉库，采用C/C++编写，提供Python、MATLAB以及其他语言的接口。</p>
+<h3 id="一、图片存储原理"><a href="#一、图片存储原理" class="headerlink" title="一、图片存储原理"></a>一、图片存储原理</h3><h4 id="1、颜色空间RGB"><a href="#1、颜色空间RGB" class="headerlink" title="1、颜色空间RGB"></a>1、颜色空间RGB</h4><p><strong>（1）RGB三通道彩色图</strong></p>
+<p>图片可以拆分为三个由R、G、B构成通道，每个通道都是一个二维矩阵。</p>
+<h4 id="2、图像处理"><a href="#2、图像处理" class="headerlink" title="2、图像处理"></a>2、图像处理</h4><p><strong>（1）卷积/滤波</strong></p>
+<p>在每个图片位置(x,y)上进行基于邻域的函数计算</p>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+<p><strong>公式:</strong></p>
+<script type="math/tex; mode=display">h[x,y] = \sum_{k,l} f[k,l]I[x+k,y+l]</script><p>h[x,y] —— 卷积结果</p>
+<p>f[k,l] —— 卷积核</p>
+<p>I[x+k,y+l] —— 像素邻域值</p>
+<p><strong>演示动图：</strong></p>
+<p><img src="https://ask.qcloudimg.com/draft/1436590/xm5dgjoibz.jpg" alt=""></p>
+<h3 id="二、OpenCV基础"><a href="#二、OpenCV基础" class="headerlink" title="二、OpenCV基础"></a>二、OpenCV基础</h3><p>Open CV是一个开源的计算机视觉库，采用C/C++编写，提供Python、MATLAB以及其他语言的接口。</p>
 <h4 id="1、基本I-O操作"><a href="#1、基本I-O操作" class="headerlink" title="1、基本I/O操作"></a>1、基本I/O操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 打开图片</span></div><div class="line">img = cv2.imread(<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 显示图片</span></div><div class="line">img = cv2.imshow(<span class="string">'lion'</span>,<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 保存图片</span></div><div class="line">cv2.imwrite(<span class="string">'lion2.jpg'</span>,img)</div></pre></td></tr></table></figure>
 <h4 id="2、灰度、二值化处理"><a href="#2、灰度、二值化处理" class="headerlink" title="2、灰度、二值化处理"></a>2、灰度、二值化处理</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2  </div><div class="line"></div><div class="line"><span class="comment"># 读取图片</span></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度化处理、保存处理后文件</span></div><div class="line">img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)</div><div class="line">cv2.imwrite(<span class="string">'wsc-gray.jpg'</span>,img)</div><div class="line"></div><div class="line"><span class="comment"># 二值化处理、保存处理后文件</span></div><div class="line">cv2.threshold(image, <span class="number">550</span>, <span class="number">550</span>, <span class="number">0</span>, image) </div><div class="line">cv2.imwrite(<span class="string">'wsc-two-value.jpg'</span>,img)</div></pre></td></tr></table></figure>
 <table border="0">
@@ -358,7 +371,7 @@
   </tr>
 </table>
 
-<h3 id="二、有趣的例子"><a href="#二、有趣的例子" class="headerlink" title="二、有趣的例子"></a>二、有趣的例子</h3><h4 id="1、边缘检测"><a href="#1、边缘检测" class="headerlink" title="1、边缘检测"></a>1、边缘检测</h4><p><strong>Canny边缘检测</strong></p>
+<h3 id="三、有趣的例子"><a href="#三、有趣的例子" class="headerlink" title="三、有趣的例子"></a>三、有趣的例子</h3><h4 id="1、边缘检测"><a href="#1、边缘检测" class="headerlink" title="1、边缘检测"></a>1、边缘检测</h4><p><strong>Canny边缘检测</strong></p>
 <p>代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 读取图片</span></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># Canny边缘检测处理，并写入图片</span></div><div class="line">cv2.imwrite(<span class="string">'wsc1.jpeg'</span>,cv2.Canny(img,<span class="number">200</span>,<span class="number">300</span>))</div></pre></td></tr></table></figure>
 <table border="0">
