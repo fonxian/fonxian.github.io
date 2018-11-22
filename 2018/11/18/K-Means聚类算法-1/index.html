@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="一、K-Means基础1、机器学习概念（1）机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、K-Means概念 无监督学习 可以发现k个不同的簇  3、K-Means算法1234567创建k个点作为质心新增一个数据点时	遍历每个数据点">
+<meta name="description" content="一、K-Means基础1、机器学习概念（1）机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、K-Means概念 无监督学习 可以发现K个不同的簇 K的选取：  3、K-Means算法1234567创建k个点作为质心新增一个数据点时	遍历每">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K-Means聚类算法">
 <meta property="og:url" content="http://www.coffejoy.com/2018/11/18/K-Means聚类算法-1/index.html">
 <meta property="og:site_name" content="今際の国">
-<meta property="og:description" content="一、K-Means基础1、机器学习概念（1）机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、K-Means概念 无监督学习 可以发现k个不同的簇  3、K-Means算法1234567创建k个点作为质心新增一个数据点时	遍历每个数据点">
-<meta property="og:updated_time" content="2018-11-18T12:48:27.000Z">
+<meta property="og:description" content="一、K-Means基础1、机器学习概念（1）机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、K-Means概念 无监督学习 可以发现K个不同的簇 K的选取：  3、K-Means算法1234567创建k个点作为质心新增一个数据点时	遍历每">
+<meta property="og:updated_time" content="2018-11-18T15:04:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K-Means聚类算法">
-<meta name="twitter:description" content="一、K-Means基础1、机器学习概念（1）机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、K-Means概念 无监督学习 可以发现k个不同的簇  3、K-Means算法1234567创建k个点作为质心新增一个数据点时	遍历每个数据点">
+<meta name="twitter:description" content="一、K-Means基础1、机器学习概念（1）机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、K-Means概念 无监督学习 可以发现K个不同的簇 K的选取：  3、K-Means算法1234567创建k个点作为质心新增一个数据点时	遍历每">
 
 
 
@@ -347,7 +347,8 @@
 </ul>
 <h4 id="2、K-Means概念"><a href="#2、K-Means概念" class="headerlink" title="2、K-Means概念"></a>2、K-Means概念</h4><ul>
 <li>无监督学习</li>
-<li>可以发现k个不同的簇</li>
+<li>可以发现K个不同的簇</li>
+<li>K的选取：</li>
 </ul>
 <h4 id="3、K-Means算法"><a href="#3、K-Means算法" class="headerlink" title="3、K-Means算法"></a>3、K-Means算法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">创建k个点作为质心</div><div class="line">新增一个数据点时</div><div class="line">	遍历每个数据点</div><div class="line">		遍历每个质心</div><div class="line">			计算质心与数据点之间的距离</div><div class="line">		将数据点分配到最近的簇</div><div class="line">	更新质心（每个簇，计算簇中所有点的均值，作为质心）</div></pre></td></tr></table></figure>
 
@@ -395,6 +396,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/23/线性回归/" rel="prev" title="线性回归">
+                线性回归 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -466,7 +471,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
