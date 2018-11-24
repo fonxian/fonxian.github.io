@@ -109,7 +109,10 @@
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/8z3umaunrb.jpeg">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/byo30dqg0u.jpeg">
 <meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/lonx4ht2tx.jpeg">
-<meta property="og:updated_time" content="2018-11-18T09:28:52.000Z">
+<meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/g4ooudgre3.png">
+<meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/60882ad7ir.jpeg">
+<meta property="og:image" content="https://ask.qcloudimg.com/draft/1436590/wpbqa3fvrc.jpg">
+<meta property="og:updated_time" content="2018-11-24T06:54:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenCV 初体验">
 <meta name="twitter:description" content="本文简单地介绍计算机图形处理的一些基本概念，以及一些有趣的例子和对应的Open CV的代码操作。 一、图片存储原理1、颜色空间RGB（1）RGB三通道彩色图 图片可以拆分为三个由R、G、B构成通道，每个通道都是一个二维矩阵。 2、图像处理（1）卷积/滤波 在每个图片位置(x,y)上进行基于邻域的函数计算    公式: h[x,y] = \sum_{k,l} f[k,l]I[x+k,y+l]h[x,">
@@ -377,6 +380,7 @@
   </tr>
 </table>
 
+<h4 id="3、图片匹配"><a href="#3、图片匹配" class="headerlink" title="3、图片匹配"></a>3、图片匹配</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">cv2.matchTemplate(img,template,eval(<span class="string">'cv2.TM_CCOEFF'</span>))</div></pre></td></tr></table></figure>
 <h3 id="三、有趣的例子"><a href="#三、有趣的例子" class="headerlink" title="三、有趣的例子"></a>三、有趣的例子</h3><h4 id="1、边缘检测"><a href="#1、边缘检测" class="headerlink" title="1、边缘检测"></a>1、边缘检测</h4><p><strong>Canny边缘检测</strong></p>
 <p>代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 读取图片</span></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># Canny边缘检测处理，并写入图片</span></div><div class="line">cv2.imwrite(<span class="string">'wsc1.jpeg'</span>,cv2.Canny(img,<span class="number">200</span>,<span class="number">300</span>))</div></pre></td></tr></table></figure>
@@ -411,6 +415,14 @@
 </table>
 
 <p>剩下的三位没有识别出来，目前还在找原因。</p>
+<h4 id="3、图像匹配"><a href="#3、图像匹配" class="headerlink" title="3、图像匹配"></a>3、图像匹配</h4><p>搜索模板图片</p>
+<p><img src="https://ask.qcloudimg.com/draft/1436590/g4ooudgre3.png" alt="模板图片"></p>
+<p>原图</p>
+<p><img src="https://ask.qcloudimg.com/draft/1436590/60882ad7ir.jpeg" alt="IG原图"></p>
+<p>代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># 读取图片</span></div><div class="line">img = cv2.imread(<span class="string">'ig.jpeg'</span>)</div><div class="line">template = cv2.imread(<span class="string">'wsc123.png'</span>)</div><div class="line"><span class="comment"># 对图片进行缩放，缩放到合适大小90*90</span></div><div class="line">template = cv2.resize(template, (<span class="number">90</span>, <span class="number">90</span>),interpolation=cv2.INTER_CUBIC)</div><div class="line"></div><div class="line"><span class="comment"># 进行图像匹配</span></div><div class="line">res = cv2.matchTemplate(img,template,eval(<span class="string">'cv2.TM_CCOEFF'</span>))</div><div class="line"></div><div class="line"><span class="comment"># 记录模板的宽度和高度</span></div><div class="line">w, h = template[:,:,<span class="number">0</span>].shape[::<span class="number">-1</span>]</div><div class="line"></div><div class="line"><span class="comment"># 王思聪边框的具体位置</span></div><div class="line">min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(res)</div><div class="line"></div><div class="line"><span class="comment"># 画出红框</span></div><div class="line">top_left = max_loc</div><div class="line">bottom_right = (top_left[<span class="number">0</span>] + w, top_left[<span class="number">1</span>] + h)</div><div class="line">imgplt = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</div><div class="line">cv2.rectangle(imgplt,top_left, bottom_right, <span class="number">255</span>, <span class="number">2</span>)</div><div class="line"></div><div class="line"><span class="comment"># 显示图片</span></div><div class="line">plt.imshow(imgplt)</div><div class="line"><span class="comment"># plt.imshow(template)</span></div><div class="line">plt.title(<span class="string">'Detected results'</span>), plt.xticks([]), plt.yticks([])</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p>结果</p>
+<p><img src="https://ask.qcloudimg.com/draft/1436590/wpbqa3fvrc.jpg" alt="处理结果"></p>
 
       
     </div>
@@ -537,7 +549,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -585,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、图片存储原理"><span class="nav-number">1.</span> <span class="nav-text">一、图片存储原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、颜色空间RGB"><span class="nav-number">1.1.</span> <span class="nav-text">1、颜色空间RGB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、图像处理"><span class="nav-number">1.2.</span> <span class="nav-text">2、图像处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、OpenCV基础"><span class="nav-number">2.</span> <span class="nav-text">二、OpenCV基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、基本I-O操作"><span class="nav-number">2.1.</span> <span class="nav-text">1、基本I/O操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、灰度、二值化处理"><span class="nav-number">2.2.</span> <span class="nav-text">2、灰度、二值化处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、有趣的例子"><span class="nav-number">3.</span> <span class="nav-text">三、有趣的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、边缘检测"><span class="nav-number">3.1.</span> <span class="nav-text">1、边缘检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、人脸检测"><span class="nav-number">3.2.</span> <span class="nav-text">2、人脸检测</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、图片存储原理"><span class="nav-number">1.</span> <span class="nav-text">一、图片存储原理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、颜色空间RGB"><span class="nav-number">1.1.</span> <span class="nav-text">1、颜色空间RGB</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、图像处理"><span class="nav-number">1.2.</span> <span class="nav-text">2、图像处理</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、OpenCV基础"><span class="nav-number">2.</span> <span class="nav-text">二、OpenCV基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、基本I-O操作"><span class="nav-number">2.1.</span> <span class="nav-text">1、基本I/O操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、灰度、二值化处理"><span class="nav-number">2.2.</span> <span class="nav-text">2、灰度、二值化处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、图片匹配"><span class="nav-number">2.3.</span> <span class="nav-text">3、图片匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、有趣的例子"><span class="nav-number">3.</span> <span class="nav-text">三、有趣的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、边缘检测"><span class="nav-number">3.1.</span> <span class="nav-text">1、边缘检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、人脸检测"><span class="nav-number">3.2.</span> <span class="nav-text">2、人脸检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、图像匹配"><span class="nav-number">3.3.</span> <span class="nav-text">3、图像匹配</span></a></li></ol></li></ol></div>
             
 
           </div>
