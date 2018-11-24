@@ -692,7 +692,8 @@
             <p>本文简单地介绍计算机图形处理的一些基本概念，以及一些有趣的例子和对应的Open CV的代码操作。</p>
 <p>顺便说一句，恭喜IG夺冠！</p>
 <h3 id="一、图片存储原理"><a href="#一、图片存储原理" class="headerlink" title="一、图片存储原理"></a>一、图片存储原理</h3><h4 id="1、颜色空间RGB"><a href="#1、颜色空间RGB" class="headerlink" title="1、颜色空间RGB"></a>1、颜色空间RGB</h4><p><strong>（1）RGB三通道彩色图</strong></p>
-<p>图片可以拆分为三个由R、G、B构成通道，每个通道都是一个二维矩阵。</p>
+<p>图片由三维矩阵叠加而成（[0,255]），通俗讲就是将三个分别只有R(red),G(green),B(blue)的矩阵叠加。</p>
+<p><img src="https://ask.qcloudimg.com/draft/1436590/86iz60yluf.png" alt="三维矩阵"></p>
 <h4 id="2、图像处理"><a href="#2、图像处理" class="headerlink" title="2、图像处理"></a>2、图像处理</h4><p><strong>（1）卷积/滤波</strong></p>
 <p>在每个图片位置(x,y)上进行基于邻域的函数计算</p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
@@ -706,7 +707,9 @@
 <p><img src="https://ask.qcloudimg.com/draft/1436590/xm5dgjoibz.jpg" alt=""></p>
 <h3 id="二、OpenCV基础"><a href="#二、OpenCV基础" class="headerlink" title="二、OpenCV基础"></a>二、OpenCV基础</h3><p>Open CV是一个开源的计算机视觉库，采用C/C++编写，提供Python、MATLAB以及其他语言的接口。</p>
 <h4 id="1、基本I-O操作"><a href="#1、基本I-O操作" class="headerlink" title="1、基本I/O操作"></a>1、基本I/O操作</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 打开图片</span></div><div class="line">img = cv2.imread(<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 显示图片</span></div><div class="line">img = cv2.imshow(<span class="string">'lion'</span>,<span class="string">'lion.jpg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 保存图片</span></div><div class="line">cv2.imwrite(<span class="string">'lion2.jpg'</span>,img)</div></pre></td></tr></table></figure>
-<h4 id="2、灰度、二值化处理"><a href="#2、灰度、二值化处理" class="headerlink" title="2、灰度、二值化处理"></a>2、灰度、二值化处理</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2  </div><div class="line"></div><div class="line"><span class="comment"># 读取图片</span></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度化处理、保存处理后文件</span></div><div class="line">img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)</div><div class="line">cv2.imwrite(<span class="string">'wsc-gray.jpg'</span>,img)</div><div class="line"></div><div class="line"><span class="comment"># 二值化处理、保存处理后文件</span></div><div class="line">cv2.threshold(image, <span class="number">550</span>, <span class="number">550</span>, <span class="number">0</span>, image) </div><div class="line">cv2.imwrite(<span class="string">'wsc-two-value.jpg'</span>,img)</div></pre></td></tr></table></figure>
+<h4 id="2、灰度、二值化处理"><a href="#2、灰度、二值化处理" class="headerlink" title="2、灰度、二值化处理"></a>2、灰度、二值化处理</h4><p><strong>灰度化</strong>：在RGB模型中，如果R=G=B时，则彩色表示一种灰度颜色。</p>
+<p><strong>二值化</strong>：图像的二值化，就是将图像上的像素点的灰度值设置为0或255，整个图像呈现出明显的只有黑和白的视觉效果</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2  </div><div class="line"></div><div class="line"><span class="comment"># 读取图片</span></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 灰度化处理、保存处理后文件</span></div><div class="line">img = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)</div><div class="line">cv2.imwrite(<span class="string">'wsc-gray.jpg'</span>,img)</div><div class="line"></div><div class="line"><span class="comment"># 二值化处理、保存处理后文件</span></div><div class="line">cv2.threshold(image, <span class="number">550</span>, <span class="number">550</span>, <span class="number">0</span>, image) </div><div class="line">cv2.imwrite(<span class="string">'wsc-two-value.jpg'</span>,img)</div></pre></td></tr></table></figure>
 <table border="0">
   <tr>
     <th>图片处理前</th>
@@ -726,7 +729,23 @@
   </tr>
 </table>
 
-<h4 id="3、图片匹配"><a href="#3、图片匹配" class="headerlink" title="3、图片匹配"></a>3、图片匹配</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">cv2.matchTemplate(img,template,eval(<span class="string">'cv2.TM_CCOEFF'</span>))</div></pre></td></tr></table></figure>
+<h4 id="3、图片匹配"><a href="#3、图片匹配" class="headerlink" title="3、图片匹配"></a>3、图片匹配</h4><p><code>matchTemplate</code>用于在图像中与模板图片比对，查找目标</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cv2.matchTemplate(img,template,eval(<span class="string">'cv2.TM_CCOEFF'</span>))</div></pre></td></tr></table></figure>
+<p>关键参数</p>
+<ul>
+<li><p><code>TM_SQDIFF</code> 平方差匹配法：该方法采用平方差来进行匹配；最好的匹配值为0；匹配越差，匹配值越大。</p>
+</li>
+<li><p><code>TM_CCORR</code> 相关匹配法：该方法采用乘法操作；数值越大表明匹配程度越好。</p>
+</li>
+<li><p><code>TM_CCOEFF</code> 相关系数匹配法：1表示完美的匹配；-1表示最差的匹配。</p>
+</li>
+<li><p><code>TM_SQDIFF_NORMED</code> 归一化平方差匹配法　　　　　　</p>
+</li>
+<li><p><code>TM_CCORR_NORMED</code> 归一化相关匹配法　　　　　　</p>
+</li>
+<li><p><code>TM_CCOEFF_NORMED</code> 归一化相关系数匹配法</p>
+</li>
+</ul>
 <h3 id="三、有趣的例子"><a href="#三、有趣的例子" class="headerlink" title="三、有趣的例子"></a>三、有趣的例子</h3><h4 id="1、边缘检测"><a href="#1、边缘检测" class="headerlink" title="1、边缘检测"></a>1、边缘检测</h4><p><strong>Canny边缘检测</strong></p>
 <p>代码</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#-*- coding: utf-8 -*-</span></div><div class="line"><span class="keyword">import</span> cv2</div><div class="line"></div><div class="line"><span class="comment"># 读取图片</span></div><div class="line">img = cv2.imread(<span class="string">'wsc.jpeg'</span>)</div><div class="line"></div><div class="line"><span class="comment"># Canny边缘检测处理，并写入图片</span></div><div class="line">cv2.imwrite(<span class="string">'wsc1.jpeg'</span>,cv2.Canny(img,<span class="number">200</span>,<span class="number">300</span>))</div></pre></td></tr></table></figure>
