@@ -267,7 +267,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/11/24/聊天机器人/">
+    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/11/24/Java并发锁/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fonxian">
@@ -286,7 +286,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/24/聊天机器人/" itemprop="url">当我们谈论“锁”时，我们在谈论什么</a></h1>
+                <a class="post-title-link" href="/2018/11/24/Java并发锁/" itemprop="url">当我们谈论“锁”时，我们在谈论什么</a></h1>
         
 
         <div class="post-meta">
@@ -336,7 +336,8 @@
         
           
             <blockquote>
-<p>莫看江面平如镜，且看水底万丈深。—— 谚语</p>
+<p>在一秒钟内看到本质的人和花半辈子也看不清一件事本质的人,自然是不一样的命运。</p>
+<p>——马里奥·普佐</p>
 </blockquote>
 <p>每当遇到Java面试，“锁”是个必然会被提到的东西。那么，在面试中，谈“锁”都会谈论些什么呢，诸位看官又是否对“锁”有足够的了解？</p>
 <p>本文旨在剖析锁的底层原理，以及锁的应用场景。</p>
@@ -347,7 +348,7 @@
 <p>不会互斥，因为锁的是<code>对象</code>，而不是<code>方法</code>。</p>
 <p><strong>（2）如果writer、reader方法加上static修饰，两个线程中，类直接调用两个方法呢？</strong></p>
 <p>会互斥，因为锁的是Class对象。</p>
-<p><strong>（3）如果writer()用static修饰，reader()不用呢？</strong></p>
+<p><strong>（3）如果writer方法用static修饰，reader方法不用呢？</strong></p>
 <p>不会互斥。因为一个是对象锁，一个是Class对象锁，锁的类型不同。</p>
 <p><strong>synchronized修饰位置与锁的关系</strong>：</p>
 <ul>
@@ -408,7 +409,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/11/23/线性回归/">
+    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/11/23/Java内存对齐/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="fonxian">
@@ -427,7 +428,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/23/线性回归/" itemprop="url">线性回归</a></h1>
+                <a class="post-title-link" href="/2018/11/23/Java内存对齐/" itemprop="url">线性回归</a></h1>
         
 
         <div class="post-meta">
