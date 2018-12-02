@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="一、数学基础  1、似然函数概率（probability）：描述已知参数时的随机变量的输出结果； 似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布3、对数公式\log AB = \log A +">
+<meta name="description" content="一、数学基础  1、似然函数概率（probability）：描述已知参数时的随机变量的输出结果； 似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布数学期望（mean）：试验中，每次可能结果的概率">
 <meta name="keywords" content="DeepLearning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性回归数学推导">
 <meta property="og:url" content="http://www.coffejoy.com/2018/12/02/线性回归数学推导/index.html">
 <meta property="og:site_name" content="今際の国">
-<meta property="og:description" content="一、数学基础  1、似然函数概率（probability）：描述已知参数时的随机变量的输出结果； 似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布3、对数公式\log AB = \log A +">
-<meta property="og:updated_time" content="2018-12-02T06:39:47.000Z">
+<meta property="og:description" content="一、数学基础  1、似然函数概率（probability）：描述已知参数时的随机变量的输出结果； 似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布数学期望（mean）：试验中，每次可能结果的概率">
+<meta property="og:updated_time" content="2018-12-02T09:59:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归数学推导">
-<meta name="twitter:description" content="一、数学基础  1、似然函数概率（probability）：描述已知参数时的随机变量的输出结果； 似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布3、对数公式\log AB = \log A +">
+<meta name="twitter:description" content="一、数学基础  1、似然函数概率（probability）：描述已知参数时的随机变量的输出结果； 似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布数学期望（mean）：试验中，每次可能结果的概率">
 
 
 
@@ -336,7 +336,13 @@
 <h4 id="1、似然函数"><a href="#1、似然函数" class="headerlink" title="1、似然函数"></a>1、似然函数</h4><p>概率（probability）：描述已知参数时的随机变量的输出结果；</p>
 <p>似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。</p>
 <script type="math/tex; mode=display">L(\theta | x) = f(x | \theta)</script><p>似然函数和密度函数是完全不同的两个数学对象，前者是关于<script type="math/tex">\theta</script>的函数，后者是关于<script type="math/tex">x</script>的函数。</p>
-<h4 id="2、高斯分布"><a href="#2、高斯分布" class="headerlink" title="2、高斯分布"></a>2、高斯分布</h4><h4 id="3、对数公式"><a href="#3、对数公式" class="headerlink" title="3、对数公式"></a>3、对数公式</h4><script type="math/tex; mode=display">\log AB = \log A + \log B</script><h4 id="4、矩阵计算"><a href="#4、矩阵计算" class="headerlink" title="4、矩阵计算"></a>4、矩阵计算</h4><p><strong>矩阵转置</strong>：行变列，列变行。</p>
+<h4 id="2、高斯分布"><a href="#2、高斯分布" class="headerlink" title="2、高斯分布"></a>2、高斯分布</h4><p><strong>数学期望（mean）</strong>：试验中，每次可能结果的概率乘以其结果的总和。</p>
+<p><strong>（伯努利）大数定律</strong>：当试验次数足够多时，事件发生的频率无穷接近于该事件发生的概率。</p>
+<p><strong>伯努利试验</strong>：设试验E只可能有两种结果：“A”和“非A”</p>
+<p><strong>n重伯努利试验</strong>：将E独立的重复地进行n次,则称这一穿重复的独立试验为n重伯努利试验</p>
+<p><strong>二项分布（伯努利分布）</strong>：将一伯努利试验重复了n次,在这n次试验中成功次数k,k为随机变量,称为二次随机变量,其分布称为二项分布</p>
+<script type="math/tex; mode=display">P(X = k) = C_n^kp^k(1-p)^{n-k} , k = 1,2,...,n</script><p><strong>正态分布</strong>:又称“高斯分布”</p>
+<script type="math/tex; mode=display">f(x) = \frac 1 {\sqrt{2 \pi }\sigma} e ^ {- \frac {(x^2-\mu^2)} {2\sigma^2}}</script><h4 id="3、对数公式"><a href="#3、对数公式" class="headerlink" title="3、对数公式"></a>3、对数公式</h4><script type="math/tex; mode=display">\log AB = \log A + \log B</script><h4 id="4、矩阵计算"><a href="#4、矩阵计算" class="headerlink" title="4、矩阵计算"></a>4、矩阵计算</h4><p><strong>矩阵转置</strong>：行变列，列变行。</p>
 <p><strong>矩阵乘法</strong>：A的列数必须与B的行数相等</p>
 <script type="math/tex; mode=display">
 A = 
@@ -351,8 +357,7 @@ B =
 e & f & g
 \end{matrix} \right]
 \\\\
-A^T B = ae + bf + cg</script><h3 id="二、推导"><a href="#二、推导" class="headerlink" title="二、推导"></a>二、推导</h3><p>1、线性回归公式</p>
-<script type="math/tex; mode=display">
+A^T B = ae + bf + cg</script><h3 id="二、推导"><a href="#二、推导" class="headerlink" title="二、推导"></a>二、推导</h3><h4 id="1、线性回归公式"><a href="#1、线性回归公式" class="headerlink" title="1、线性回归公式"></a>1、线性回归公式</h4><script type="math/tex; mode=display">
 y = wx + b</script><p>当存在多个特征参数的时候，不同的特征参数对目标函数值有不同的权重参数。</p>
 <script type="math/tex; mode=display">
 h_\theta(x) = \theta _ 1 x _ 1 + \theta _2 x _ 2 + ... + \theta _n x _ n 
@@ -371,10 +376,12 @@ h_\theta(x) = \theta _ 1 x _ 1 + \theta _2 x _ 2 + ... + \theta _n x _ n
 \end{matrix} \right]
 \left[
 \begin{matrix}
-x _ 1 & x _ 2 & ... x _ n 
+x _ 1 & x _ 2 & ... & x _ n 
 \end{matrix} \right]
 = \sum_{i=1}^n\theta _ i x _ i
-= h_\theta(x)</script>
+= h_\theta(x)</script><h4 id="2、计算误差"><a href="#2、计算误差" class="headerlink" title="2、计算误差"></a>2、计算误差</h4><p>误差项：真实值和预测值之间存在的一个误差，我们通常希望误差越小越好。</p>
+<script type="math/tex; mode=display">
+h_\theta(x) = \theta ^ T x + \xi</script>
       
     </div>
 
@@ -544,7 +551,7 @@ x _ 1 & x _ 2 & ... x _ n
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、数学基础"><span class="nav-number">1.</span> <span class="nav-text">一、数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、似然函数"><span class="nav-number">1.1.</span> <span class="nav-text">1、似然函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、高斯分布"><span class="nav-number">1.2.</span> <span class="nav-text">2、高斯分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、对数公式"><span class="nav-number">1.3.</span> <span class="nav-text">3、对数公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、矩阵计算"><span class="nav-number">1.4.</span> <span class="nav-text">4、矩阵计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、推导"><span class="nav-number">2.</span> <span class="nav-text">二、推导</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、数学基础"><span class="nav-number">1.</span> <span class="nav-text">一、数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、似然函数"><span class="nav-number">1.1.</span> <span class="nav-text">1、似然函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、高斯分布"><span class="nav-number">1.2.</span> <span class="nav-text">2、高斯分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、对数公式"><span class="nav-number">1.3.</span> <span class="nav-text">3、对数公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、矩阵计算"><span class="nav-number">1.4.</span> <span class="nav-text">4、矩阵计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、推导"><span class="nav-number">2.</span> <span class="nav-text">二、推导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、线性回归公式"><span class="nav-number">2.1.</span> <span class="nav-text">1、线性回归公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、计算误差"><span class="nav-number">2.2.</span> <span class="nav-text">2、计算误差</span></a></li></ol></li></ol></div>
             
 
           </div>
