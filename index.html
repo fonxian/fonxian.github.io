@@ -342,28 +342,40 @@
 <script type="math/tex; mode=display">L(\theta | x) = f(x | \theta)</script><p>似然函数和密度函数是完全不同的两个数学对象，前者是关于<script type="math/tex">\theta</script>的函数，后者是关于<script type="math/tex">x</script>的函数。</p>
 <h4 id="2、高斯分布"><a href="#2、高斯分布" class="headerlink" title="2、高斯分布"></a>2、高斯分布</h4><h4 id="3、对数公式"><a href="#3、对数公式" class="headerlink" title="3、对数公式"></a>3、对数公式</h4><script type="math/tex; mode=display">\log AB = \log A + \log B</script><h4 id="4、矩阵计算"><a href="#4、矩阵计算" class="headerlink" title="4、矩阵计算"></a>4、矩阵计算</h4><p><strong>矩阵转置</strong>：行变列，列变行。</p>
 <p><strong>矩阵乘法</strong>：A的列数必须与B的行数相等</p>
-<p>A = $$<br>\left[<br>\begin{matrix}<br>a &amp; b &amp; c<br>\end{matrix}<br>\right]</p>
 <script type="math/tex; mode=display">
-
-B =</script><p>\left[<br>\begin{matrix}<br>e &amp; f &amp; g<br>\end{matrix}<br>\right]</p>
+A = 
+\left[
+\begin{matrix}
+a & b & c 
+\end{matrix} \right]</script><script type="math/tex; mode=display">
+B = 
+\left[
+\begin{matrix}
+e & f & g
+\end{matrix} \right]</script><script type="math/tex; mode=display">
+A^T B = ae + bf + cg</script><h3 id="二、推导"><a href="#二、推导" class="headerlink" title="二、推导"></a>二、推导</h3><p>1、线性回归公式</p>
 <script type="math/tex; mode=display">
-</script><p>A^T B = ae + bf + cg</p>
+y = wx + b</script><p>当存在多个特征参数的时候，不同的特征参数对目标函数值有不同的权重参数。</p>
 <script type="math/tex; mode=display">
-
-
-### 二、推导
-
-1、线性回归公式</script><p>y = wx + b</p>
+h_\theta(x) = \theta _ 1 x _ 1 + \theta _2 x _ 2 + ... + \theta _n x _ n</script><script type="math/tex; mode=display">
+= \sum_{i=1}^n\theta _ i x _ i</script><p>使用矩阵来表示</p>
 <script type="math/tex; mode=display">
-
-当存在多个特征参数的时候，不同的特征参数对目标函数值有不同的权重参数。</script><p>h_\theta(x) = \theta _ 1 x _ 1 + \theta _2 x _ 2 + … + \theta _n x _ n </p>
-<script type="math/tex; mode=display">
-</script><p>= \sum_{i=1}^n\theta _ i x _ i</p>
-<script type="math/tex; mode=display">
-
-使用矩阵来表示</script><p>\theta^T x =<br>\left[<br>\begin{matrix}<br>\theta _ 1 \\\\<br>\theta _ 2 \\\\<br>.\\\\<br>.\\\\<br>.\\\\<br>\theta _ n \\\\<br>\end{matrix} \right]<br>\left[<br>\begin{matrix}<br>x _ 1 &amp; x _ 2 &amp; … x _ n<br>\end{matrix} \right]<br>= \sum_{i=1}^n\theta _ i x _ i<br>= h_\theta(x)</p>
-<p>$$</p>
-
+\theta^T x =
+\left[
+\begin{matrix}
+\theta _ 1 \\\\
+\theta _ 2 \\\\
+.\\\\
+.\\\\
+.\\\\
+\theta _ n \\\\
+\end{matrix} \right]
+\left[
+\begin{matrix}
+x _ 1 & x _ 2 & ... x _ n 
+\end{matrix} \right]
+= \sum_{i=1}^n\theta _ i x _ i
+= h_\theta(x)</script>
           
         
       
