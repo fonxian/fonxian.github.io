@@ -345,32 +345,25 @@
 <p>A = $$<br>\left[<br>\begin{matrix}<br>a &amp; b &amp; c<br>\end{matrix} \right]</p>
 <script type="math/tex; mode=display">
 
-B =</script><p>\left[<br>\begin{matrix}<br>e &amp; f &amp; g<br>\end{matrix} \right]</p>
+B =</script><p>\left[<br>\begin{matrix}<br>e &amp; f &amp; g<br>\end{matrix}<br>\right]</p>
+<script type="math/tex; mode=display">
+</script><p>A^T B = ae + bf + cg</p>
 <script type="math/tex; mode=display">
 
-$$A^T B = ae + bf + cg</script><h3 id="二、推导"><a href="#二、推导" class="headerlink" title="二、推导"></a>二、推导</h3><p>1、线性回归公式</p>
+
+### 二、推导
+
+1、线性回归公式</script><p>y = wx + b</p>
 <script type="math/tex; mode=display">
-y = wx + b</script><p>当存在多个特征参数的时候，不同的特征参数对目标函数值有不同的权重参数。</p>
+
+当存在多个特征参数的时候，不同的特征参数对目标函数值有不同的权重参数。</script><p>h_\theta(x) = \theta _ 1 x _ 1 + \theta _2 x _ 2 + … + \theta _n x _ n </p>
 <script type="math/tex; mode=display">
-h_\theta(x) = \theta _ 1 x _ 1 + \theta _2 x _ 2 + ... + \theta _n x _ n</script><script type="math/tex; mode=display">
-= \sum_{i=1}^n\\theta _ i x _ i</script><p>使用矩阵来表示</p>
+</script><p>= \sum_{i=1}^n\theta _ i x _ i</p>
 <script type="math/tex; mode=display">
-\theta^T x =
-\left[
-\begin{matrix}
-\\theta _ 1 \\\\
-\\theta _ 2 \\\\
-.\\\\
-.\\\\
-.\\\\
-\\theta _ n \\\\
-\end{matrix} \right]
-\left[
-\begin{matrix}
-x _ 1 & x _ 2 & ... x _ n \\\\
-\end{matrix} \right]
-= \sum_{i=1}^n\\theta _ i x _ i
-= h_\theta(x)</script>
+
+使用矩阵来表示</script><p>\theta^T x =<br>\left[<br>\begin{matrix}<br>\theta _ 1 \\\\<br>\theta _ 2 \\\\<br>.\\\\<br>.\\\\<br>.\\\\<br>\theta _ n \\\\<br>\end{matrix} \right]<br>\left[<br>\begin{matrix}<br>x _ 1 &amp; x _ 2 &amp; … x _ n \\\\<br>\end{matrix} \right]<br>= \sum_{i=1}^n\theta _ i x _ i<br>= h_\theta(x)</p>
+<p>$$</p>
+
           
         
       
