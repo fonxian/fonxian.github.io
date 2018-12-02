@@ -93,16 +93,16 @@
 
 
 
-<meta name="description" content="一、K-Means基础1、机器学习概念（1）机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、K-Means概念 无监督学习 可以发现K个不同的簇 K的选取：  3、K-Means算法1234567创建k个点作为质心新增一个数据点时	遍历每">
+<meta name="description" content="一、机器学习、数学基础  1、机器学习（1）、机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）、学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、数学基础（1）、欧式距离 二维空间，两点间距离公式A(x1,y1)，B(x1,y1)  d(A,B) = \sqrt { {(x _ 2 -">
 <meta property="og:type" content="article">
 <meta property="og:title" content="K-Means聚类算法">
 <meta property="og:url" content="http://www.coffejoy.com/2018/11/18/K-Means聚类算法-1/index.html">
 <meta property="og:site_name" content="今際の国">
-<meta property="og:description" content="一、K-Means基础1、机器学习概念（1）机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、K-Means概念 无监督学习 可以发现K个不同的簇 K的选取：  3、K-Means算法1234567创建k个点作为质心新增一个数据点时	遍历每">
-<meta property="og:updated_time" content="2018-11-18T15:04:03.000Z">
+<meta property="og:description" content="一、机器学习、数学基础  1、机器学习（1）、机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）、学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、数学基础（1）、欧式距离 二维空间，两点间距离公式A(x1,y1)，B(x1,y1)  d(A,B) = \sqrt { {(x _ 2 -">
+<meta property="og:updated_time" content="2018-12-02T16:27:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="K-Means聚类算法">
-<meta name="twitter:description" content="一、K-Means基础1、机器学习概念（1）机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、K-Means概念 无监督学习 可以发现K个不同的簇 K的选取：  3、K-Means算法1234567创建k个点作为质心新增一个数据点时	遍历每">
+<meta name="twitter:description" content="一、机器学习、数学基础  1、机器学习（1）、机器学习定义 研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。 （2）、学习方式  监督学习  训练数据带判断结果标识    无监督学习  训练数据不被标识    2、数学基础（1）、欧式距离 二维空间，两点间距离公式A(x1,y1)，B(x1,y1)  d(A,B) = \sqrt { {(x _ 2 -">
 
 
 
@@ -330,9 +330,11 @@
       
 
       
-        <h3 id="一、K-Means基础"><a href="#一、K-Means基础" class="headerlink" title="一、K-Means基础"></a>一、K-Means基础</h3><h4 id="1、机器学习概念"><a href="#1、机器学习概念" class="headerlink" title="1、机器学习概念"></a>1、机器学习概念</h4><p><strong>（1）机器学习定义</strong></p>
+        <h3 id="一、机器学习、数学基础"><a href="#一、机器学习、数学基础" class="headerlink" title="一、机器学习、数学基础"></a>一、机器学习、数学基础</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<h4 id="1、机器学习"><a href="#1、机器学习" class="headerlink" title="1、机器学习"></a>1、机器学习</h4><p><strong>（1）、机器学习定义</strong></p>
 <p>研究计算机如何模拟或实现人类的学习行为，以获得新的知识和技能，并不断改善已有知识结构和性能。</p>
-<p><strong>（2）学习方式</strong></p>
+<p><strong>（2）、学习方式</strong></p>
 <ul>
 <li><p>监督学习</p>
 <ul>
@@ -345,12 +347,15 @@
 </ul>
 </li>
 </ul>
-<h4 id="2、K-Means概念"><a href="#2、K-Means概念" class="headerlink" title="2、K-Means概念"></a>2、K-Means概念</h4><ul>
+<h4 id="2、数学基础"><a href="#2、数学基础" class="headerlink" title="2、数学基础"></a>2、数学基础</h4><p><strong>（1）、欧式距离</strong></p>
+<p>二维空间，两点间距离公式A(x1,y1)，B(x1,y1)</p>
+<script type="math/tex; mode=display">
+d(A,B) = \sqrt { {(x _ 2 - x _ 1 ) ^ 2} + {(y _ 2 - y _ 1 ) ^ 2} }</script><h3 id="二、K-Means概念"><a href="#二、K-Means概念" class="headerlink" title="二、K-Means概念"></a>二、K-Means概念</h3><h4 id="1、K-Means概念"><a href="#1、K-Means概念" class="headerlink" title="1、K-Means概念"></a>1、K-Means概念</h4><ul>
 <li>无监督学习</li>
 <li>可以发现K个不同的簇</li>
 <li>K的选取：</li>
 </ul>
-<h4 id="3、K-Means算法"><a href="#3、K-Means算法" class="headerlink" title="3、K-Means算法"></a>3、K-Means算法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">创建k个点作为质心</div><div class="line">新增一个数据点时</div><div class="line">	遍历每个数据点</div><div class="line">		遍历每个质心</div><div class="line">			计算质心与数据点之间的距离</div><div class="line">		将数据点分配到最近的簇</div><div class="line">	更新质心（每个簇，计算簇中所有点的均值，作为质心）</div></pre></td></tr></table></figure>
+<h4 id="2、K-Means算法"><a href="#2、K-Means算法" class="headerlink" title="2、K-Means算法"></a>2、K-Means算法</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">创建k个点作为质心</div><div class="line">新增一个数据点时</div><div class="line">	遍历每个数据点</div><div class="line">		遍历每个质心</div><div class="line">			计算质心与数据点之间的距离</div><div class="line">		将数据点分配到最近的簇</div><div class="line">	更新质心（每个簇，计算簇中所有点的均值，作为质心）</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -519,7 +524,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、K-Means基础"><span class="nav-number">1.</span> <span class="nav-text">一、K-Means基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、机器学习概念"><span class="nav-number">1.1.</span> <span class="nav-text">1、机器学习概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、K-Means概念"><span class="nav-number">1.2.</span> <span class="nav-text">2、K-Means概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、K-Means算法"><span class="nav-number">1.3.</span> <span class="nav-text">3、K-Means算法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、机器学习、数学基础"><span class="nav-number">1.</span> <span class="nav-text">一、机器学习、数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、机器学习"><span class="nav-number">1.1.</span> <span class="nav-text">1、机器学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、数学基础"><span class="nav-number">1.2.</span> <span class="nav-text">2、数学基础</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、K-Means概念"><span class="nav-number">2.</span> <span class="nav-text">二、K-Means概念</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、K-Means概念"><span class="nav-number">2.1.</span> <span class="nav-text">1、K-Means概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、K-Means算法"><span class="nav-number">2.2.</span> <span class="nav-text">2、K-Means算法</span></a></li></ol></li></ol></div>
             
 
           </div>
