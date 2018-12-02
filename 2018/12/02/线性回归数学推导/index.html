@@ -93,17 +93,17 @@
 
 
 
-<meta name="description" content="一、数学基础  1、似然函数概率：描述已知参数时的随机变量的输出结果； 似然函数：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布">
+<meta name="description" content="一、数学基础  1、似然函数概率（probability）：描述已知参数时的随机变量的输出结果； 似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布3、对数公式\log AB = \log A +">
 <meta name="keywords" content="DeepLearning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="线性回归数学推导">
 <meta property="og:url" content="http://www.coffejoy.com/2018/12/02/线性回归数学推导/index.html">
 <meta property="og:site_name" content="今際の国">
-<meta property="og:description" content="一、数学基础  1、似然函数概率：描述已知参数时的随机变量的输出结果； 似然函数：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布">
-<meta property="og:updated_time" content="2018-12-01T17:53:23.000Z">
+<meta property="og:description" content="一、数学基础  1、似然函数概率（probability）：描述已知参数时的随机变量的输出结果； 似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布3、对数公式\log AB = \log A +">
+<meta property="og:updated_time" content="2018-12-02T06:25:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线性回归数学推导">
-<meta name="twitter:description" content="一、数学基础  1、似然函数概率：描述已知参数时的随机变量的输出结果； 似然函数：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布">
+<meta name="twitter:description" content="一、数学基础  1、似然函数概率（probability）：描述已知参数时的随机变量的输出结果； 似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。 L(\theta | x) = f(x | \theta)似然函数和密度函数是完全不同的两个数学对象，前者是关于\theta的函数，后者是关于x的函数。 2、高斯分布3、对数公式\log AB = \log A +">
 
 
 
@@ -333,10 +333,40 @@
       
         <h3 id="一、数学基础"><a href="#一、数学基础" class="headerlink" title="一、数学基础"></a>一、数学基础</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
-<h4 id="1、似然函数"><a href="#1、似然函数" class="headerlink" title="1、似然函数"></a>1、似然函数</h4><p>概率：描述已知参数时的随机变量的输出结果；</p>
-<p>似然函数：用来描述已知随机变量输出结果时，未知参数的可能取值。</p>
+<h4 id="1、似然函数"><a href="#1、似然函数" class="headerlink" title="1、似然函数"></a>1、似然函数</h4><p>概率（probability）：描述已知参数时的随机变量的输出结果；</p>
+<p>似然函数（likelihood）：用来描述已知随机变量输出结果时，未知参数的可能取值。</p>
 <script type="math/tex; mode=display">L(\theta | x) = f(x | \theta)</script><p>似然函数和密度函数是完全不同的两个数学对象，前者是关于<script type="math/tex">\theta</script>的函数，后者是关于<script type="math/tex">x</script>的函数。</p>
-<h4 id="2、高斯分布"><a href="#2、高斯分布" class="headerlink" title="2、高斯分布"></a>2、高斯分布</h4>
+<h4 id="2、高斯分布"><a href="#2、高斯分布" class="headerlink" title="2、高斯分布"></a>2、高斯分布</h4><h4 id="3、对数公式"><a href="#3、对数公式" class="headerlink" title="3、对数公式"></a>3、对数公式</h4><script type="math/tex; mode=display">\log AB = \log A + \log B</script><h4 id="4、矩阵计算"><a href="#4、矩阵计算" class="headerlink" title="4、矩阵计算"></a>4、矩阵计算</h4><p><strong>矩阵转置</strong>：行变列，列变行。</p>
+<p><strong>矩阵乘法</strong>：A的列数必须与B的行数相等</p>
+<p>A = $$<br>\left[<br>\begin{matrix}<br>a &amp; b &amp; c<br>\end{matrix} \right]</p>
+<script type="math/tex; mode=display">
+
+B =</script><p>\left[<br>\begin{matrix}<br>e &amp; f &amp; g<br>\end{matrix} \right]</p>
+<script type="math/tex; mode=display">
+
+$$A^T B = ae + bf + cg</script><h3 id="二、推导"><a href="#二、推导" class="headerlink" title="二、推导"></a>二、推导</h3><p>1、线性回归公式</p>
+<script type="math/tex; mode=display">
+y = wx + b</script><p>当存在多个特征参数的时候，不同的特征参数对目标函数值有不同的权重参数。</p>
+<script type="math/tex; mode=display">
+h_\theta(x) = \theta _ 1 x _ 1 + \theta _2 x _ 2 + ... + \theta _n x _ n</script><script type="math/tex; mode=display">
+= \sum_{i=1}^n\\theta _ i x _ i</script><p>使用矩阵来表示</p>
+<script type="math/tex; mode=display">
+\theta^T x =
+\left[
+\begin{matrix}
+\\theta _ 1 \\\\
+\\theta _ 2 \\\\
+.\\\\
+.\\\\
+.\\\\
+\\theta _ n \\\\
+\end{matrix} \right]
+\left[
+\begin{matrix}
+x _ 1 & x _ 2 & ... x _ n \\\\
+\end{matrix} \right]
+= \sum_{i=1}^n\\theta _ i x _ i
+= h_\theta(x)</script>
       
     </div>
 
@@ -506,7 +536,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、数学基础"><span class="nav-number">1.</span> <span class="nav-text">一、数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、似然函数"><span class="nav-number">1.1.</span> <span class="nav-text">1、似然函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、高斯分布"><span class="nav-number">1.2.</span> <span class="nav-text">2、高斯分布</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、数学基础"><span class="nav-number">1.</span> <span class="nav-text">一、数学基础</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、似然函数"><span class="nav-number">1.1.</span> <span class="nav-text">1、似然函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、高斯分布"><span class="nav-number">1.2.</span> <span class="nav-text">2、高斯分布</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、对数公式"><span class="nav-number">1.3.</span> <span class="nav-text">3、对数公式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、矩阵计算"><span class="nav-number">1.4.</span> <span class="nav-text">4、矩阵计算</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、推导"><span class="nav-number">2.</span> <span class="nav-text">二、推导</span></a></li></ol></div>
             
 
           </div>
