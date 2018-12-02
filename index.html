@@ -361,7 +361,8 @@ B =
 e & f & g
 \end{matrix} \right]
 \\\\
-A^T B = ae + bf + cg</script><h3 id="二、推导"><a href="#二、推导" class="headerlink" title="二、推导"></a>二、推导</h3><h4 id="1、线性回归公式"><a href="#1、线性回归公式" class="headerlink" title="1、线性回归公式"></a>1、线性回归公式</h4><script type="math/tex; mode=display">
+A^T B = ae + bf + cg</script><p><strong>矩阵求导</strong></p>
+<h3 id="二、推导"><a href="#二、推导" class="headerlink" title="二、推导"></a>二、推导</h3><h4 id="1、线性回归公式"><a href="#1、线性回归公式" class="headerlink" title="1、线性回归公式"></a>1、线性回归公式</h4><script type="math/tex; mode=display">
 y = wx + b</script><p>当存在多个特征参数的时候，不同的特征参数对目标函数值有不同的权重参数。</p>
 <script type="math/tex; mode=display">
 h_\theta(x) = \theta _ 1 x _ 1 + \theta _2 x _ 2 + ... + \theta _n x _ n 
@@ -407,7 +408,19 @@ J(\theta) = \frac 1 {2} \sum_{i=1}^{m} {(y _ i - \theta ^ T x _ i)} ^ 2</script>
 <script type="math/tex; mode=display">
 J(\theta) = \frac 1 {2} \sum_{i=1}^{m} {(h _ \theta(x _ i) - y _ i)} ^ 2
 \\\\
-= \frac 1 {2} (x \theta - y) ^ T (x \theta - y)</script>
+= \frac 1 {2} (x \theta - y) ^ T (x \theta - y)</script><p>对矩阵求偏导</p>
+<script type="math/tex; mode=display">
+\partial_\theta J(\theta) = \partial _ \theta ( { \frac 1 {2} (x \theta - y) ^ T (x \theta - y) } )
+\\\\
+= \partial_\theta { ( \frac 1 {2} ( \theta ^ T x ^ T - y ^ T )  (x \theta - y) ) }
+\\\\
+= \partial _ \theta { ( \frac 1 {2} ( { \theta ^ T x ^ T x \theta } - { \theta ^ T x ^ T y } - {y ^ T x \theta } + {y ^ T y } ) }
+\\\\
+=  \frac 1 {2} ( { 2 x ^ T x \theta } - { x ^ T y } - { (y ^ T x) ^ T } )
+\\\\
+=  {x ^ T x \theta} - { x ^ T y}</script><p>最好的情况是，偏导数为0，说明梯度递减已经到达最底部。最后得到结果如下</p>
+<script type="math/tex; mode=display">
+\theta = {(x ^ T x) ^ {-1}} {x ^ T} y</script>
           
         
       
