@@ -385,7 +385,29 @@ x _ 1 & x _ 2 & ... & x _ n
 = \sum_{i=1}^n\theta _ i x _ i
 = h_\theta(x)</script><h4 id="2、计算误差"><a href="#2、计算误差" class="headerlink" title="2、计算误差"></a>2、计算误差</h4><p>误差项：真实值和预测值之间存在的一个误差，我们通常希望误差越小越好。</p>
 <script type="math/tex; mode=display">
-h_\theta(x) = \theta ^ T x + \xi</script>
+h_\theta(x) = \theta ^ T x + \xi
+\\\\
+y ^ {(i)} = \theta ^ T x ^ {(i)} + \xi ^ {(i)}</script><p>误差项符合高斯分布，所以</p>
+<script type="math/tex; mode=display">
+P(\xi _ i) = \frac 1 { \sqrt {2 \pi } \sigma} e ^ { - \frac { \xi ^ 2 } { 2 \sigma ^ 2}}
+\\\\
+P(y _ i | x _ i ; \theta) = \frac 1 { \sqrt { 2 \pi } \sigma } e ^ { - \frac { { (y _ i - \theta ^ T x _ i)} ^ 2 } {2 \sigma ^ 2 } }</script><p>要计算某些参数和特征组合让误差最小，这里引入似然函数</p>
+<script type="math/tex; mode=display">
+L(\theta) = \prod_{ i=1 }^{ m } P(y _ i | x _ i ; \theta) = \prod_{i=1}^{m} \frac 1 { \sqrt{2 \pi } \sigma } e ^ {- \frac { { (y _ i - \theta ^ T x _ i) } ^ 2 } { 2\sigma^2 } }
+\\\\
+\log L(\theta) = \log \prod_{i=1}^{m} \frac 1 { \sqrt{ 2 \pi }\sigma } e ^ { - \frac { { ( y _ i - \theta ^ T x _ i ) } ^ 2 } { 2\sigma^2 } }
+\\\\
+= \sum_{i=1}^{m} \log  \frac 1 { \sqrt{ 2 \pi }\sigma } e ^ { - \frac { { (y _ i - \theta ^ T x _ i) } ^ 2 } { 2\sigma^2 } }
+\\\\
+= \sum_{i=1}^{m} ( \log  \frac 1 { \sqrt{ 2 \pi }\sigma } + \log e ^ { - \frac { { ( y _ i - \theta ^ T x _ i ) } ^ 2 } { 2 \sigma ^ 2 } })
+\\\\
+= m \log \frac 1 { \sqrt{ 2 \pi }\sigma } - \frac 1 { 2 { \sigma } ^ 2 } \sum_{i=1}^{m} { ( y _ i - \theta ^ T x _ i ) } ^ 2</script><p>因不考虑定值，得出<script type="math/tex">J(\theta)</script>越小越好</p>
+<script type="math/tex; mode=display">
+J(\theta) = \frac 1 {2} \sum_{i=1}^{m} {(y _ i - \theta ^ T x _ i)} ^ 2</script><h4 id="3、矩阵求偏导"><a href="#3、矩阵求偏导" class="headerlink" title="3、矩阵求偏导"></a>3、矩阵求偏导</h4><p>根据矩阵知识，将上式转换</p>
+<script type="math/tex; mode=display">
+J(\theta) = \frac 1 {2} \sum_{i=1}^{m} {(h _ \theta(x _ i) - y _ i)} ^ 2
+\\\\
+= \frac 1 {2} (x \theta - y) ^ T (x \theta - y)</script>
           
         
       
