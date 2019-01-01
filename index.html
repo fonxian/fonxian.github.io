@@ -267,6 +267,384 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/12/22/实现逻辑回归-神经网络/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fonxian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/fonxian.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="今際の国">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/22/实现逻辑回归-神经网络/" itemprop="url">实现逻辑回归-神经网络</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-22T11:00:32+08:00">
+                2018-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<h2 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h2><p><strong>1、逻辑回归与线性回归的区别?</strong></p>
+<p><code>线性回归</code>预测得到的是一个数值，而<code>逻辑回归</code>预测到的数值只有0、1两个值。<code>逻辑回归</code>是在线性回归的基础上，加上一个<code>sigmoid函数</code>，让其值位于<code>0-1</code>之间，最后获得的值大于<code>0.5</code>判断为<code>1</code>，小于等于<code>0.5</code>判断为<code>0</code></p>
+<h2 id="二、逻辑回归的推导"><a href="#二、逻辑回归的推导" class="headerlink" title="二、逻辑回归的推导"></a>二、逻辑回归的推导</h2><script type="math/tex; mode=display">\hat y$$表示``预测值``，$$y$$表示``训练标签值``
+
+**1、一般公式**</script><p>\hat y = wx + b</p>
+<script type="math/tex; mode=display">
+
+**2、向量化**</script><p>\hat y = w^Tx+b</p>
+<script type="math/tex; mode=display">
+
+**3、激活函数**
+引入sigmoid函数（用$$\sigma$$表示)，使$$\hat y$$值位于0-1</script><p>\hat y = \sigma (w^Tx+b)</p>
+<script type="math/tex; mode=display">
+
+**4、损失函数**
+损失函数用$$L$$表示</script><p>L(\hat y ,y) = \frac 1 2 (\hat y - y) ^ 2</p>
+<script type="math/tex; mode=display">
+
+因``梯度下降``效果不好，换用``交叉熵损失函数``</script><p>L(\hat y,y) = - [y\log \hat y + (1-y)\log(1-\hat y)]</p>
+<script type="math/tex; mode=display">
+
+**5、代价函数**
+
+代价函数用$$J$$表示</script><p>J(w,b) = \frac 1 m \sum_{i=1}^m L(\hat y^{(i)},y^{(i)})</p>
+<script type="math/tex; mode=display">
+
+展开</script><p>J(w,b) = - \frac 1 m \sum_{i=1}^m [y^{(i)}\log \hat y^{(i)} + (1-y^{(i)})\log(1-\hat y ^ {(i)})]</p>
+<script type="math/tex; mode=display">
+
+**6、正向传播**</script><p>a = 5,b=3,c=2</p>
+<script type="math/tex; mode=display">
+</script><p>u = bc  \to 6</p>
+<script type="math/tex; mode=display">
+</script><p>v = a + u \to 11</p>
+<script type="math/tex; mode=display">
+</script><p>J = 3v \to 33</p>
+<script type="math/tex; mode=display">
+
+**7、反向传播**
+
+ 求出$$da$$ = 3，表示$$J$$对$$a$$的``偏导数``</script><p>J = 3v \to \frac {dJ} {da} = \frac {dJ} {dv} \frac {dv} {da} = 3</p>
+<script type="math/tex; mode=display">
+
+ 求出$$db$$ = 6</script><p>J = 3v \to \frac {dJ} {dc} = \frac {dJ} {dv} \frac {dv} {du} \frac {du} {dc} = 3c = 6</p>
+<script type="math/tex; mode=display">
+
+ 求出$$dc$$ = 6</script><p>J = 3v \to \frac {dJ} {db} = \frac {dJ} {dv} \frac {dv} {du} \frac {du} {db} = 3b = 9</p>
+<script type="math/tex; mode=display">
+
+对``Sigmod函数``求导</script><p>\sigma (z) = \frac 1 {1 + e ^ {-z}} = s</p>
+<script type="math/tex; mode=display">
+</script><p>dz = \frac {e^{-z}}{(1 + e^{-z}) ^ 2}</p>
+<script type="math/tex; mode=display">
+</script><p>dz = \frac 1 {1 + e^{-z} }  (1  - \frac 1 {1+e^{-z}})</p>
+<script type="math/tex; mode=display">
+</script><p>=\sigma(z)(1-\sigma(z)) </p>
+<script type="math/tex; mode=display">
+</script><p>=s(1-s)</p>
+<p>$$</p>
+<p><strong>8、反向传播的意义</strong></p>
+<p>修正参数，使<code>代价函数值</code>减少，<code>预测值</code>接近<code>实际值</code>。</p>
+<p>举个例子：</p>
+<p>(1) 玩一个猜数游戏，目标数字为150。</p>
+<p>(2) <strong>输入训练样本值:</strong> 你第一次猜出一个数字为x = 10</p>
+<p>(3) <strong>设置初始权重:</strong> 设置一个权重值，比如权重w设为0.5</p>
+<p>(4) <strong>正向计算：</strong> 进行计算，获得值wx</p>
+<p>(5) <strong>求出代价函数：</strong> 出题人说差了多少（说的不是具体数字，而是用0-10表示，10表示差的离谱，1表示非常接近，0表示正确）</p>
+<p>(6) <strong>反向传播或求导：</strong> 你通过出题人的结论，去一点点修正权重（增加w或减少w）。</p>
+<p>(7) 重复(4)操作，直到无限接近或等于目标数字。</p>
+<p><strong>机器学习，就是在训练中改进、优化，找到最有泛化能力的规则。</strong></p>
+<h2 id="三、神经网络实现"><a href="#三、神经网络实现" class="headerlink" title="三、神经网络实现"></a>三、神经网络实现</h2><p><strong>1、实现激活函数Sigmoid</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(z)</span>:</span></div><div class="line">    s = <span class="number">1.0</span> / (<span class="number">1.0</span> + np.exp(-z))</div><div class="line">    <span class="keyword">return</span> s</div></pre></td></tr></table></figure>
+<p><strong>2、参数初始化</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">initialize_with_zeros</span><span class="params">(dim)</span>:</span></div><div class="line">    w = np.zeros([dim,<span class="number">1</span>])</div><div class="line">    b = <span class="number">0</span></div><div class="line">    <span class="keyword">return</span> w, b</div></pre></td></tr></table></figure>
+<p><strong>3、前后向传播</strong></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/28/167f0dacad1206f6?w=960&amp;h=256&amp;f=png&amp;s=24934" alt="前后向传播"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">propagate</span><span class="params">(w, b, X, Y)</span>:</span></div><div class="line">    m = X.shape[<span class="number">1</span>]</div><div class="line">    A = sigmoid(np.dot(w.T,X) + b)                                </div><div class="line">    cost = (- <span class="number">1.0</span> / m ) * np.sum(Y*np.log(A) + (<span class="number">1</span>-Y)*np.log(<span class="number">1</span>-A))       </div><div class="line">    dw = (<span class="number">1.0</span> / m) * np.dot(X,(A - Y).T)</div><div class="line">    db = (<span class="number">1.0</span> / m) * np.sum(A - Y)</div><div class="line"></div><div class="line">    cost = np.squeeze(cost)</div><div class="line">    grads = &#123;<span class="string">"dw"</span>: dw,<span class="string">"db"</span>: db&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> grads, cost</div></pre></td></tr></table></figure>
+<p><strong>4、优化器实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">optimize</span><span class="params">(w, b, X, Y, num_iterations, learning_rate, print_cost = False)</span>:</span></div><div class="line">    </div><div class="line">    costs = []</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_iterations):</div><div class="line">        </div><div class="line">        <span class="comment"># Cost and gradient calculation</span></div><div class="line">        grads, cost = propagate(w,b,X,Y)</div><div class="line">        </div><div class="line">        <span class="comment"># Retrieve derivatives from grads</span></div><div class="line">        dw = grads[<span class="string">"dw"</span>]</div><div class="line">        db = grads[<span class="string">"db"</span>]</div><div class="line">        </div><div class="line">        <span class="comment"># update rule</span></div><div class="line">        w = w - learning_rate * dw</div><div class="line">        b = b - learning_rate * db</div><div class="line">        </div><div class="line">        <span class="comment"># Record the costs</span></div><div class="line">        <span class="keyword">if</span> i % <span class="number">100</span> == <span class="number">0</span>:</div><div class="line">            costs.append(cost)</div><div class="line">        </div><div class="line">        <span class="comment"># Print the cost every 100 training iterations</span></div><div class="line">        <span class="keyword">if</span> print_cost <span class="keyword">and</span> i % <span class="number">100</span> == <span class="number">0</span>:</div><div class="line">            <span class="keyword">print</span> (<span class="string">"Cost after iteration %i: %f"</span> %(i, cost))</div><div class="line">   </div><div class="line">    params = &#123;<span class="string">"w"</span>: w,</div><div class="line">              <span class="string">"b"</span>: b&#125;</div><div class="line">    </div><div class="line">    grads = &#123;<span class="string">"dw"</span>: dw,</div><div class="line">             <span class="string">"db"</span>: db&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> params, grads, costs</div></pre></td></tr></table></figure>
+<p><strong>5、预测函数</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def predict(w, b, X):</div><div class="line">    m = X.shape[1]</div><div class="line">    Y_prediction = np.zeros((1,m))</div><div class="line">    w = w.reshape(X.shape[0], 1)</div><div class="line">    # Compute vector &quot;A&quot; predicting the probabilities of a cat being present in the picture</div><div class="line">    A = sigmoid(np.dot(w.T,X)+b)</div><div class="line"></div><div class="line">    for i in range(A.shape[1]):</div><div class="line">        # Convert probabilities A[0,i] to actual predictions p[0,i]</div><div class="line">        if A[0][i] &lt;= 0.5:</div><div class="line">            Y_prediction[0][i] = 0</div><div class="line">        else:</div><div class="line">            Y_prediction[0][i] = 1</div><div class="line"></div><div class="line">    return Y_prediction</div></pre></td></tr></table></figure>
+<p><strong>6、代码模块整合</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model</span><span class="params">(X_train, Y_train, X_test, Y_test, num_iterations = <span class="number">2000</span>, learning_rate = <span class="number">0.5</span>, print_cost = False)</span>:</span></div><div class="line"></div><div class="line">    <span class="comment"># initialize parameters with zeros (≈ 1 line of code)</span></div><div class="line">    w, b = initialize_with_zeros(train_set_x.shape[<span class="number">0</span>])</div><div class="line"></div><div class="line">    <span class="comment"># Gradient descent (≈ 1 line of code)</span></div><div class="line">    parameters, grads, costs = optimize(w, b, X_train, Y_train, num_iterations, learning_rate, print_cost)</div><div class="line">    </div><div class="line">    <span class="comment"># Retrieve parameters w and b from dictionary "parameters"</span></div><div class="line">    w = parameters[<span class="string">"w"</span>]</div><div class="line">    b = parameters[<span class="string">"b"</span>]</div><div class="line">    </div><div class="line">    Y_prediction_test = predict(w, b, X_test)</div><div class="line">    Y_prediction_train = predict(w, b, X_train)</div><div class="line"></div><div class="line">    <span class="comment"># Print train/test Errors</span></div><div class="line">    print(<span class="string">"train accuracy: &#123;&#125; %"</span>.format(<span class="number">100</span> - np.mean(np.abs(Y_prediction_train - Y_train)) * <span class="number">100</span>))</div><div class="line">    print(<span class="string">"test accuracy: &#123;&#125; %"</span>.format(<span class="number">100</span> - np.mean(np.abs(Y_prediction_test - Y_test)) * <span class="number">100</span>))</div><div class="line"></div><div class="line">    </div><div class="line">    d = &#123;<span class="string">"costs"</span>: costs,</div><div class="line">         <span class="string">"Y_prediction_test"</span>: Y_prediction_test, </div><div class="line">         <span class="string">"Y_prediction_train"</span> : Y_prediction_train, </div><div class="line">         <span class="string">"w"</span> : w, </div><div class="line">         <span class="string">"b"</span> : b,</div><div class="line">         <span class="string">"learning_rate"</span> : learning_rate,</div><div class="line">         <span class="string">"num_iterations"</span>: num_iterations&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> d</div></pre></td></tr></table></figure>
+<p><strong>7、运行程序</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">d = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = <span class="number">2000</span>, learning_rate = <span class="number">0.005</span>, print_cost = <span class="keyword">True</span>)</div></pre></td></tr></table></figure>
+<p>结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">Cost after iteration 0: 0.693147</div><div class="line">Cost after iteration 100: 0.584508</div><div class="line">Cost after iteration 200: 0.466949</div><div class="line">Cost after iteration 300: 0.376007</div><div class="line">Cost after iteration 400: 0.331463</div><div class="line">Cost after iteration 500: 0.303273</div><div class="line">Cost after iteration 600: 0.279880</div><div class="line">Cost after iteration 700: 0.260042</div><div class="line">Cost after iteration 800: 0.242941</div><div class="line">Cost after iteration 900: 0.228004</div><div class="line">Cost after iteration 1000: 0.214820</div><div class="line">Cost after iteration 1100: 0.203078</div><div class="line">Cost after iteration 1200: 0.192544</div><div class="line">Cost after iteration 1300: 0.183033</div><div class="line">Cost after iteration 1400: 0.174399</div><div class="line">Cost after iteration 1500: 0.166521</div><div class="line">Cost after iteration 1600: 0.159305</div><div class="line">Cost after iteration 1700: 0.152667</div><div class="line">Cost after iteration 1800: 0.146542</div><div class="line">Cost after iteration 1900: 0.140872</div><div class="line">train accuracy: 99.04306220095694 %</div><div class="line">test accuracy: 70.0 %</div></pre></td></tr></table></figure>
+<p><strong>8、更多的分析</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">learning_rates = [<span class="number">0.01</span>, <span class="number">0.001</span>, <span class="number">0.0001</span>]</div><div class="line">models = &#123;&#125;</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> learning_rates:</div><div class="line">    <span class="keyword">print</span> (<span class="string">"learning rate is: "</span> + str(i))</div><div class="line">    models[str(i)] = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = <span class="number">1500</span>, learning_rate = i, print_cost = <span class="keyword">False</span>)</div><div class="line">    <span class="keyword">print</span> (<span class="string">'\n'</span> + <span class="string">"-------------------------------------------------------"</span> + <span class="string">'\n'</span>)</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> learning_rates:</div><div class="line">    plt.plot(np.squeeze(models[str(i)][<span class="string">"costs"</span>]), label= str(models[str(i)][<span class="string">"learning_rate"</span>]))</div><div class="line"></div><div class="line">plt.ylabel(<span class="string">'cost'</span>)</div><div class="line">plt.xlabel(<span class="string">'iterations (hundreds)'</span>)</div><div class="line"></div><div class="line">legend = plt.legend(loc=<span class="string">'upper center'</span>, shadow=<span class="keyword">True</span>)</div><div class="line">frame = legend.get_frame()</div><div class="line">frame.set_facecolor(<span class="string">'0.90'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/28/167f0dacaeb623ff?w=1228&amp;h=792&amp;f=png&amp;s=115215" alt="学习曲线"></p>
+<p><strong>9、测试图片</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## START CODE HERE ## (PUT YOUR IMAGE NAME) </span></div><div class="line">my_image = <span class="string">"my_image.jpg"</span>   <span class="comment"># change this to the name of your image file </span></div><div class="line"><span class="comment">## END CODE HERE ##</span></div><div class="line"></div><div class="line"><span class="comment"># We preprocess the image to fit your algorithm.</span></div><div class="line">fname = <span class="string">"images/"</span> + my_image</div><div class="line">image = np.array(ndimage.imread(fname, flatten=<span class="keyword">False</span>))</div><div class="line">my_image = scipy.misc.imresize(image, size=(num_px,num_px)).reshape((<span class="number">1</span>, num_px*num_px*<span class="number">3</span>)).T</div><div class="line">my_predicted_image = predict(d[<span class="string">"w"</span>], d[<span class="string">"b"</span>], my_image)</div><div class="line"></div><div class="line">plt.imshow(image)</div><div class="line">print(<span class="string">"y = "</span> + str(np.squeeze(my_predicted_image)) + <span class="string">", your algorithm predicts a \""</span> + classes[int(np.squeeze(my_predicted_image)),].decode(<span class="string">"utf-8"</span>) +  <span class="string">"\" picture."</span>)</div></pre></td></tr></table></figure>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">y = 0.0, your algorithm predicts a &quot;non-cat&quot; picture.</div></pre></td></tr></table></figure></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/28/167f0dacafb59967?w=1236&amp;h=714&amp;f=png&amp;s=785782" alt="image.png"></p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://www.coursera.org/learn/neural-networks-deep-learning" target="_blank" rel="external">神经网络和深度学习-吴恩达——Course1 Week2</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/12/21/深度学习之Numpy整理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="fonxian">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/fonxian.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="今際の国">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/21/深度学习之Numpy整理/" itemprop="url">深度学习之Numpy整理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-21T12:03:32+08:00">
+                2018-12-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、Numpy介绍、为什么要用Numpy"><a href="#一、Numpy介绍、为什么要用Numpy" class="headerlink" title="一、Numpy介绍、为什么要用Numpy"></a>一、Numpy介绍、为什么要用Numpy</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<p><strong>1、Numpy介绍</strong></p>
+<p><code>Numpy</code>是Python的一个扩展包，语法和Matlab有很多相似之处。它支持高维数组和矩阵运算，也提供了许多数组和矩阵运算的函数。另外，它在数组和矩阵运算方面速度很快，效率很高。</p>
+<p><strong>2、为什么要用Numpy</strong></p>
+<p><code>Numpy向量化计算</code>与<code>非向量化计算</code>性能比较</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># coding: utf-8</span></div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># Numpy向量化测试</span></div><div class="line">a = np.random.rand(<span class="number">1000000</span>)</div><div class="line">b = np.random.rand(<span class="number">1000000</span>)</div><div class="line"></div><div class="line">tic = time.time()</div><div class="line">c = np.dot(a,b)</div><div class="line">toc = time.time()</div><div class="line">print(<span class="string">"计算结果"</span>+str(c))</div><div class="line">print(<span class="string">"向量化使用时间:"</span>+str(<span class="number">1000</span>*(toc-tic)) + <span class="string">"ms"</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 使用for循环测试</span></div><div class="line">c = <span class="number">0</span></div><div class="line">tic = time.time()</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000000</span>):</div><div class="line">    c += a[i] * b[i]</div><div class="line"></div><div class="line">toc = time.time()</div><div class="line">print(<span class="string">"计算结果"</span>+str(c))</div><div class="line">print(<span class="string">"循环使用时间:"</span>+str(<span class="number">1000</span>*(toc-tic)) + <span class="string">"ms"</span>)</div><div class="line"></div><div class="line"><span class="comment">#计算结果250011.92519533934</span></div><div class="line"><span class="comment">#向量化使用时间:0.9119510650634766ms</span></div><div class="line"><span class="comment">#计算结果250011.92519534056</span></div><div class="line"><span class="comment">#循环使用时间:466.2208557128906ms</span></div></pre></td></tr></table></figure>
+<p><strong>为什么向量化比循环快？</strong></p>
+<p>因为Numpy对向量计算做了优化，用到了CPU或GPU的并行计算，所以速度要比单纯的for循环要快。具体细节感兴趣可以自行研究。</p>
+<h3 id="二、数组创建"><a href="#二、数组创建" class="headerlink" title="二、数组创建"></a>二、数组创建</h3><p><strong>1、生成数组</strong></p>
+<p><strong>(1)一维数组</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">x = np.array([<span class="number">1.0</span>,<span class="number">2.0</span>,<span class="number">3.0</span>])</div><div class="line">print(x)</div><div class="line"><span class="comment"># [1. 2. 3.]</span></div><div class="line"></div><div class="line">x = np.np.arange(<span class="number">0</span>,<span class="number">5</span>)</div><div class="line">print(x)</div><div class="line"><span class="comment"># [0 1 2 3 4]</span></div></pre></td></tr></table></figure>
+<p>各个元素与标量之间进行运算，称为广播。</p>
+<p><strong>(2)二维数组</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">A = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</div><div class="line">A.shape </div><div class="line"><span class="comment"># 返回n*m的数组</span></div><div class="line"></div><div class="line">A.dtype </div><div class="line"><span class="comment"># 返回数据类型</span></div><div class="line"></div><div class="line">A.size </div><div class="line"><span class="comment"># 返回数组元素个数4</span></div><div class="line"></div><div class="line">np.ndim(A) </div><div class="line"><span class="comment">#返回数组维数</span></div></pre></td></tr></table></figure>
+<p><strong>3、访问元素</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">for</span> row <span class="keyword">in</span> A:</div><div class="line">  print(row)</div><div class="line"></div><div class="line">A[<span class="number">0</span>]</div><div class="line">A[<span class="number">0</span>][<span class="number">1</span>]</div><div class="line"></div><div class="line">A.flatten() <span class="comment">#将X转换为一维数组</span></div><div class="line"><span class="comment"># [1 2 3 4]</span></div><div class="line"></div><div class="line">A[np.array([<span class="number">0</span>,<span class="number">1</span>])]<span class="comment">#获取索引为1、2的元素</span></div><div class="line"><span class="comment">#[[1 2]</span></div><div class="line"><span class="comment">#[3 4]]</span></div><div class="line"></div><div class="line">A &gt; <span class="number">15</span> <span class="comment">#获得布尔型数组</span></div><div class="line"><span class="comment">#[[False False]</span></div><div class="line"><span class="comment"># [False False]]</span></div></pre></td></tr></table></figure>
+<h3 id="三、矩阵"><a href="#三、矩阵" class="headerlink" title="三、矩阵"></a>三、矩阵</h3><p><strong>1、创建矩阵</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">A = np.matrix(<span class="string">'1,2;3,4'</span>)</div><div class="line">print(A)</div><div class="line">print(type((A)))</div><div class="line"><span class="comment">#[[1 2]</span></div><div class="line"><span class="comment"># [3 4]]</span></div><div class="line"><span class="comment">#&lt;class 'numpy.matrixlib.defmatrix.matrix'&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>2、数组转矩阵</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">A = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</div><div class="line"><span class="comment">#[[1 2]</span></div><div class="line"><span class="comment"># [3 4]]</span></div><div class="line">B = np.mat(A)</div><div class="line">print(B)</div><div class="line">print(type(B))</div><div class="line"><span class="comment">#&lt;class 'numpy.matrixlib.defmatrix.matrix'&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>3、创建单位矩阵</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">E = np.eye(<span class="number">3</span>)</div><div class="line"><span class="comment">#[[1. 0. 0.]</span></div><div class="line"><span class="comment"># [0. 1. 0.]</span></div><div class="line"><span class="comment"># [0. 0. 1.]]</span></div></pre></td></tr></table></figure>
+<p><strong>4、改变数组形状</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 将2*2的数组变形为4*1的数组</span></div><div class="line">A = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</div><div class="line">A = A.reshape((A.size,<span class="number">1</span>))</div><div class="line">print(A)</div><div class="line"></div><div class="line"><span class="comment">#[[1]</span></div><div class="line"> <span class="comment">#[2]</span></div><div class="line"> <span class="comment">#[3]</span></div><div class="line"> <span class="comment">#[4]]</span></div></pre></td></tr></table></figure>
+<h3 id="四、计算"><a href="#四、计算" class="headerlink" title="四、计算"></a>四、计算</h3><p><strong>1、广播</strong></p>
+<p>为何叫广播,因为单个标量被广播、复制成n维数组。</p>
+<p>如二维数组<code>[[1,2],[3,4]]</code>与标量10相乘，等同于<code>[[1,2],[3,4]]</code>乘以<code>[[10,10],[10,10]]</code>。</p>
+<p><strong>2、矩阵转置</strong></p>
+<p>因为<code>np.random.randn(5)</code>写法不直观，建议使用写法<code>np.random.randn(5,1)</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">a = np.random.randn(<span class="number">5</span>,<span class="number">1</span>)</div><div class="line"></div><div class="line"><span class="comment">#转置</span></div><div class="line">b = a.T</div><div class="line">print(a)</div><div class="line"></div><div class="line"><span class="comment">#[[-0.30232915]</span></div><div class="line"><span class="comment"># [-0.13689176]</span></div><div class="line"><span class="comment"># [ 0.74737671]</span></div><div class="line"><span class="comment"># [ 0.58641912]</span></div><div class="line"><span class="comment"># [ 0.14419141]]</span></div><div class="line"></div><div class="line">print(a.T)</div><div class="line"></div><div class="line"><span class="comment">#[[-0.30232915 -0.13689176  0.74737671  0.58641912  0.14419141]]</span></div></pre></td></tr></table></figure>
+<p><strong>3、矩阵乘法（点积)</strong></p>
+<p><strong>(1)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</div><div class="line">A = np.array([[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">3</span>,<span class="number">4</span>]])</div><div class="line">B = np.array([[<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>]])</div><div class="line"><span class="comment">#点积</span></div><div class="line">print(np.dot(A,B))</div><div class="line"><span class="comment">#array([[19, 22],[43, 50]])</span></div></pre></td></tr></table></figure>
+<p><strong>(2)</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a = np.random.randn(<span class="number">5</span>,<span class="number">1</span>)</div><div class="line">b = a.T</div><div class="line"><span class="comment"># （5,1）(1,5)的点积得到的是5*5的矩阵</span></div><div class="line">print(np.dot(a,b))</div><div class="line"><span class="comment"># （1,5）(5,1)的点积得到的是1*1的矩阵</span></div><div class="line">print(np.dot(b,a))</div></pre></td></tr></table></figure>
+<p><strong>4、矩阵求逆</strong></p>
+<p>$AB=E$，矩阵A与B互为<code>逆矩阵</code>，其中E为单位矩阵，E的<code>行列式计算</code>为1</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">A = np.matrix(<span class="string">'1,2;3,4'</span>)</div><div class="line">print(A.I)<span class="comment">#求逆</span></div><div class="line"><span class="comment">#[[-2.   1. ]</span></div><div class="line"><span class="comment"># [ 1.5 -0.5]]</span></div><div class="line"></div><div class="line">E = np.dot(A,A.I)</div><div class="line">print(E)</div><div class="line"><span class="comment">#[[1.0000000e+00 0.0000000e+00]</span></div><div class="line"><span class="comment">#[8.8817842e-16 1.0000000e+00]]</span></div><div class="line"></div><div class="line">value = np.linalg.det(E)<span class="comment">#行列式计算</span></div><div class="line"><span class="comment">#0.9999999999999996</span></div></pre></td></tr></table></figure>
+<p><strong>4、算术运算</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">x = np.array([<span class="number">1.0</span>,<span class="number">2.0</span>,<span class="number">3.0</span>])</div><div class="line">y = np.array([<span class="number">2.0</span>,<span class="number">3.0</span>,<span class="number">4.0</span>])</div><div class="line"></div><div class="line"><span class="comment">#减法</span></div><div class="line">print(x - y) </div><div class="line"><span class="comment"># [-1. -1. -1.]</span></div><div class="line"></div><div class="line"><span class="comment">#加法</span></div><div class="line">print(x + y)</div><div class="line"><span class="comment">#[3. 5. 7.]</span></div><div class="line"></div><div class="line"><span class="comment">#乘法</span></div><div class="line">print(x * y)</div><div class="line"><span class="comment">#[ 2.  6. 12.]</span></div><div class="line"></div><div class="line"><span class="comment">#除法</span></div><div class="line">print(x / y)</div><div class="line"><span class="comment">#[0.5        0.66666667 0.75      ]</span></div><div class="line"></div><div class="line"><span class="comment">#开方根</span></div><div class="line">print(np.sqrt(x))</div><div class="line"><span class="comment">#[1.         1.41421356 1.73205081]</span></div><div class="line"></div><div class="line"><span class="comment">#对数</span></div><div class="line">print(np.log(x))</div><div class="line"><span class="comment">#[0.         0.69314718 1.09861229]</span></div><div class="line"></div><div class="line"><span class="comment"># 指数</span></div><div class="line">print(np.exp(a))</div><div class="line"><span class="comment"># [ 2.71828183  7.3890561  20.08553692]</span></div></pre></td></tr></table></figure>
+<p><strong>5、平均值、方差、标准差</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">x = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>])</div><div class="line"></div><div class="line"><span class="comment"># 平均值</span></div><div class="line">np.mean([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line"><span class="comment"># 3.5</span></div><div class="line"></div><div class="line"><span class="comment"># 方差</span></div><div class="line">print(np.var(x))</div><div class="line"><span class="comment">#2.9166666666666665</span></div><div class="line"></div><div class="line"><span class="comment"># 标准差</span></div><div class="line">print(np.std(x))</div><div class="line"><span class="comment">#1.707825127659933</span></div></pre></td></tr></table></figure>
+<h3 id="五、应用"><a href="#五、应用" class="headerlink" title="五、应用"></a>五、应用</h3><p><strong>1、sigmoid函数</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(x)</span>:</span></div><div class="line"></div><div class="line">    s = <span class="number">1.0</span> / (<span class="number">1.0</span> + np.exp(-x))</div><div class="line">    <span class="keyword">return</span> s</div></pre></td></tr></table></figure>
+<p><strong>2、sigmoid求导</strong><br><img src="https://user-gold-cdn.xitu.io/2018/12/24/167e0b79a99c26e8?w=1240&amp;h=244&amp;f=png&amp;s=39961" alt="sigmoid求导.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid_derivative</span><span class="params">(x)</span>:</span></div><div class="line">    s = sigmoid(x)</div><div class="line">    ds = s*(<span class="number">1</span>-s)</div><div class="line">    <span class="keyword">return</span> ds</div></pre></td></tr></table></figure>
+<p><strong>3、softmax函数计算</strong><br><img src="https://user-gold-cdn.xitu.io/2018/12/26/167eb0304ca5eca9?w=1240&amp;h=500&amp;f=png&amp;s=43485" alt="softmax.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax</span><span class="params">(x)</span>:</span></div><div class="line"></div><div class="line">    x_exp = np.exp(x)</div><div class="line">    x_sum = np.sum(np.exp(x),axis=<span class="number">1</span>,keepdims = <span class="keyword">True</span>)</div><div class="line">    s = x_exp / x_sum</div><div class="line">    <span class="keyword">return</span> s</div></pre></td></tr></table></figure>
+<p><strong>4、计算损失函数</strong></p>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167eb0304cc09331?w=1240&amp;h=285&amp;f=png&amp;s=40439" alt=" loss functions.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">L1</span><span class="params">(yhat, y)</span>:</span></div><div class="line">    loss = np.sum(np.abs(yhat - y))</div><div class="line">    <span class="keyword">return</span> loss</div></pre></td></tr></table></figure>
+<p><img src="https://user-gold-cdn.xitu.io/2018/12/26/167eb0304d420267?w=1240&amp;h=205&amp;f=png&amp;s=22607" alt="loss functions.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">L1</span><span class="params">(yhat, y)</span>:</span></div><div class="line">    loss = np.sum((y - yhat)**<span class="number">2</span>)</div><div class="line">    <span class="keyword">return</span> loss</div></pre></td></tr></table></figure>
+<p><strong>5、向量化练习</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">x1 = [<span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">7</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line">x2 = [<span class="number">9</span>, <span class="number">2</span>, <span class="number">2</span>, <span class="number">9</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">9</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">0</span>, <span class="number">0</span>]</div><div class="line"></div><div class="line"><span class="comment">### VECTORIZED DOT PRODUCT OF VECTORS ###</span></div><div class="line">tic = time.process_time()</div><div class="line">dot = np.dot(x1,x2)</div><div class="line">toc = time.process_time()</div><div class="line"><span class="keyword">print</span> (<span class="string">"dot = "</span> + str(dot) + <span class="string">"\n ----- Computation time = "</span> + str(<span class="number">1000</span>*(toc - tic)) + <span class="string">"ms"</span>)</div><div class="line"></div><div class="line"><span class="comment">### VECTORIZED OUTER PRODUCT ###</span></div><div class="line">tic = time.process_time()</div><div class="line">outer = np.outer(x1,x2)</div><div class="line">toc = time.process_time()</div><div class="line"><span class="keyword">print</span> (<span class="string">"outer = "</span> + str(outer) + <span class="string">"\n ----- Computation time = "</span> + str(<span class="number">1000</span>*(toc - tic)) + <span class="string">"ms"</span>)</div><div class="line"></div><div class="line"><span class="comment">### VECTORIZED ELEMENTWISE MULTIPLICATION ###</span></div><div class="line">tic = time.process_time()</div><div class="line">mul = np.multiply(x1,x2)</div><div class="line">toc = time.process_time()</div><div class="line"><span class="keyword">print</span> (<span class="string">"elementwise multiplication = "</span> + str(mul) + <span class="string">"\n ----- Computation time = "</span> + str(<span class="number">1000</span>*(toc - tic)) + <span class="string">"ms"</span>)</div><div class="line"></div><div class="line"><span class="comment">### VECTORIZED GENERAL DOT PRODUCT ###</span></div><div class="line">tic = time.process_time()</div><div class="line">dot = np.dot(W,x1)</div><div class="line">toc = time.process_time()</div><div class="line"><span class="keyword">print</span> (<span class="string">"gdot = "</span> + str(dot) + <span class="string">"\n ----- Computation time = "</span> + str(<span class="number">1000</span>*(toc - tic)) + <span class="string">"ms"</span>)</div></pre></td></tr></table></figure>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a href="https://docs.scipy.org/doc/numpy-1.15.4/reference/" target="_blank" rel="external">Numpy 1.15.4官方文档</a></p>
+<p><a href="https://www.coursera.org/learn/neural-networks-deep-learning/lecture/NYnog/vectorization" target="_blank" rel="external">神经网络和深度学习-吴恩达——Vectorization</a></p>
+<p><a href="https://blog.csdn.net/blog_empire/article/details/39298557" target="_blank" rel="external">numpy基本方法总结</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/12/02/线性回归数学推导/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1482,7 +1860,7 @@ d(A,B) = \sqrt { {(x _ 2 - x _ 1 ) ^ 2} + {(y _ 2 - y _ 1 ) ^ 2} }</script><h3 i
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1537,7 +1915,7 @@ d(A,B) = \sqrt { {(x _ 2 - x _ 1 ) ^ 2} + {(y _ 2 - y _ 1 ) ^ 2} }</script><h3 i
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
