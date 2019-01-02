@@ -340,41 +340,64 @@
 <p><strong>1、逻辑回归与线性回归的区别?</strong></p>
 <p><code>线性回归</code>预测得到的是一个数值，而<code>逻辑回归</code>预测到的数值只有0、1两个值。<code>逻辑回归</code>是在线性回归的基础上，加上一个<code>sigmoid函数</code>，让其值位于<code>0-1</code>之间，最后获得的值大于<code>0.5</code>判断为<code>1</code>，小于等于<code>0.5</code>判断为<code>0</code></p>
 <h2 id="二、逻辑回归的推导"><a href="#二、逻辑回归的推导" class="headerlink" title="二、逻辑回归的推导"></a>二、逻辑回归的推导</h2><p><strong>1、一般公式</strong></p>
+<script type="math/tex; mode=display">\hat y$$为预测值，$$y$$为标签值。</script><p>\hat y = wx + b</p>
 <script type="math/tex; mode=display">
-\hat y = wx + b</script><p><strong>2、向量化</strong></p>
+
+**2、向量化**</script><p>\hat y = w^Tx+b</p>
 <script type="math/tex; mode=display">
-\hat y = w^Tx+b</script><p><strong>3、激活函数</strong></p>
-<p>引入sigmoid函数（用<script type="math/tex">\sigma</script>表示)，使<script type="math/tex">\hat y</script>值位于0-1</p>
+
+**3、激活函数**
+
+引入sigmoid函数（用$$\sigma$$表示)，使$$\hat y$$值位于0-1</script><p>\hat y = \sigma (w^Tx+b)</p>
 <script type="math/tex; mode=display">
-\hat y = \sigma (w^Tx+b)</script><p><strong>4、损失函数</strong></p>
-<p>损失函数用<script type="math/tex">L</script>表示</p>
+
+**4、损失函数**
+
+损失函数用$$L$$表示</script><p>L(\hat y ,y) = \frac 1 2 (\hat y - y) ^ 2</p>
 <script type="math/tex; mode=display">
-L(\hat y ,y) = \frac 1 2 (\hat y - y) ^ 2</script><p>因<code>梯度下降</code>效果不好，换用<code>交叉熵损失函数</code></p>
+
+因``梯度下降``效果不好，换用``交叉熵损失函数``</script><p>L(\hat y,y) = - [y\log \hat y + (1-y)\log(1-\hat y)]</p>
 <script type="math/tex; mode=display">
-L(\hat y,y) = - [y\log \hat y + (1-y)\log(1-\hat y)]</script><p><strong>5、代价函数</strong></p>
-<p>代价函数用<script type="math/tex">J</script>表示</p>
+
+**5、代价函数**
+
+代价函数用$$J$$表示</script><p>J(w,b) = \frac 1 m \sum_{i=1}^m L(\hat y^{(i)},y^{(i)})</p>
 <script type="math/tex; mode=display">
-J(w,b) = \frac 1 m \sum_{i=1}^m L(\hat y^{(i)},y^{(i)})</script><p>展开</p>
+
+展开</script><p>J(w,b) = - \frac 1 m \sum_{i=1}^m [y^{(i)}\log \hat y^{(i)} + (1-y^{(i)})\log(1-\hat y ^ {(i)})]</p>
 <script type="math/tex; mode=display">
-J(w,b) = - \frac 1 m \sum_{i=1}^m [y^{(i)}\log \hat y^{(i)} + (1-y^{(i)})\log(1-\hat y ^ {(i)})]</script><p><strong>6、正向传播</strong></p>
+
+**6、正向传播**</script><p>a = 5,b=3,c=2</p>
 <script type="math/tex; mode=display">
-a = 5,b=3,c=2</script><script type="math/tex; mode=display">
-u = bc  \to 6</script><script type="math/tex; mode=display">
-v = a + u \to 11</script><script type="math/tex; mode=display">
-J = 3v \to 33</script><p><strong>7、反向传播</strong></p>
-<p> 求出<script type="math/tex">da</script> = 3，表示<script type="math/tex">J</script>对<script type="math/tex">a</script>的<code>偏导数</code></p>
+</script><p>u = bc  \to 6</p>
 <script type="math/tex; mode=display">
-J = 3v \to \frac {dJ} {da} = \frac {dJ} {dv} \frac {dv} {da} = 3</script><p> 求出<script type="math/tex">db</script> = 6</p>
+</script><p>v = a + u \to 11</p>
 <script type="math/tex; mode=display">
-J = 3v \to \frac {dJ} {dc} = \frac {dJ} {dv} \frac {dv} {du} \frac {du} {dc} = 3c = 6</script><p> 求出<script type="math/tex">dc</script> = 6</p>
+</script><p>J = 3v \to 33</p>
 <script type="math/tex; mode=display">
-J = 3v \to \frac {dJ} {db} = \frac {dJ} {dv} \frac {dv} {du} \frac {du} {db} = 3b = 9</script><p>对<code>Sigmod函数</code>求导</p>
+
+**7、反向传播**
+
+ 求出$$da$$ = 3，表示$$J$$对$$a$$的``偏导数``</script><p>J = 3v \to \frac {dJ} {da} = \frac {dJ} {dv} \frac {dv} {da} = 3</p>
 <script type="math/tex; mode=display">
-\sigma (z) = \frac 1 {1 + e ^ {-z}} = s</script><script type="math/tex; mode=display">
-dz = \frac {e^{-z}}{(1 + e^{-z}) ^ 2}</script><script type="math/tex; mode=display">
-dz = \frac 1 {1 + e^{-z} }  (1  - \frac 1 {1+e^{-z}})</script><script type="math/tex; mode=display">
-=\sigma(z)(1-\sigma(z))</script><script type="math/tex; mode=display">
-=s(1-s)</script><p><strong>8、反向传播的意义</strong></p>
+
+ 求出$$db$$ = 6</script><p>J = 3v \to \frac {dJ} {dc} = \frac {dJ} {dv} \frac {dv} {du} \frac {du} {dc} = 3c = 6</p>
+<script type="math/tex; mode=display">
+
+ 求出$$dc$$ = 6</script><p>J = 3v \to \frac {dJ} {db} = \frac {dJ} {dv} \frac {dv} {du} \frac {du} {db} = 3b = 9</p>
+<script type="math/tex; mode=display">
+
+对``Sigmod函数``求导</script><p>\sigma (z) = \frac 1 {1 + e ^ {-z}} = s</p>
+<script type="math/tex; mode=display">
+</script><p>dz = \frac {e^{-z}}{(1 + e^{-z}) ^ 2}</p>
+<script type="math/tex; mode=display">
+</script><p>dz = \frac 1 {1 + e^{-z} }  (1  - \frac 1 {1+e^{-z}})</p>
+<script type="math/tex; mode=display">
+</script><p>=\sigma(z)(1-\sigma(z)) </p>
+<script type="math/tex; mode=display">
+</script><p>=s(1-s)</p>
+<p>$$</p>
+<p><strong>8、反向传播的意义</strong></p>
 <p>修正参数，使<code>代价函数值</code>减少，<code>预测值</code>接近<code>实际值</code>。</p>
 <p>举个例子：</p>
 <p>(1) 玩一个猜数游戏，目标数字为150。</p>
