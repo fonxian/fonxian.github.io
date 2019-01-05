@@ -99,7 +99,7 @@
 <meta property="og:url" content="http://www.coffejoy.com/2017/06/02/Hexo搭建博客/index.html">
 <meta property="og:site_name" content="今際の国">
 <meta property="og:description" content="安装Hexo首先先要下载并安装nodejs，然后再安装Hexo 1$ npm install -g hexo-cli 初始化文件夹1$ hexo init 创建新的文章1$ hexo new &quot;My New Post&quot; Run server1$ hexo server 生成静态页面1$ hexo generate 发布到github上修改_config.yml，参照下面的步骤“Github上创建库">
-<meta property="og:updated_time" content="2018-11-17T19:10:10.000Z">
+<meta property="og:updated_time" content="2019-01-05T08:51:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo搭建博客及管理维护">
 <meta name="twitter:description" content="安装Hexo首先先要下载并安装nodejs，然后再安装Hexo 1$ npm install -g hexo-cli 初始化文件夹1$ hexo init 创建新的文章1$ hexo new &quot;My New Post&quot; Run server1$ hexo server 生成静态页面1$ hexo generate 发布到github上修改_config.yml，参照下面的步骤“Github上创建库">
@@ -356,6 +356,16 @@
 <p>修改_config.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">url: http://www.coffejoy.com</div><div class="line">Plugins:</div><div class="line">  hexo-generator-cname</div></pre></td></tr></table></figure>
 <p><code>hexo -g</code>、<code>hexo -d</code>，之后，Github上会生成一个内容为www.coffejoy.com的CNAME文件</p>
+<h3 id="修改菜单"><a href="#修改菜单" class="headerlink" title="修改菜单"></a>修改菜单</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page &apos;diy&apos; #创建diy子目录</div></pre></td></tr></table></figure>
+<p><strong>在菜单中添加链接</strong></p>
+<p>编辑主题的_config.yml，在menu中的添加如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  archives: /archives</div><div class="line">  tags: /tags</div><div class="line">  about: /about</div><div class="line">  diy: /diy</div></pre></td></tr></table></figure>
+<p><strong>在menu中的配置图标:</strong></p>
+<p>编辑主题的_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">menu_icons:</div><div class="line">  enable: true</div><div class="line">  home: home</div><div class="line">  about: user</div><div class="line">  categories: th</div><div class="line">  tags: tags</div><div class="line">  archives: archive</div><div class="line">  diy: heartbeat</div></pre></td></tr></table></figure>
+<p><strong>新添加的菜单需要翻译对应的中文</strong></p>
+<p>打开<code>hexo&gt;theme&gt;next&gt;languages&gt;zh-Hans.yml</code>，在menu下添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: 首页</div><div class="line">  archives: 归档</div><div class="line">  categories: 分类</div><div class="line">  tags: 标签</div><div class="line">  about: 关于</div><div class="line">  diy: 我自己定义的菜单名</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -479,22 +489,13 @@
           
 
           
-            
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
-          
 
           
             
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -529,7 +530,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">1.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化文件夹"><span class="nav-number">2.</span> <span class="nav-text">初始化文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建新的文章"><span class="nav-number">3.</span> <span class="nav-text">创建新的文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">4.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成静态页面"><span class="nav-number">5.</span> <span class="nav-text">生成静态页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布到github上"><span class="nav-number">6.</span> <span class="nav-text">发布到github上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Github上创建库"><span class="nav-number">7.</span> <span class="nav-text">Github上创建库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-config-yml文件"><span class="nav-number">8.</span> <span class="nav-text">修改_config.yml文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保留CNAME文件"><span class="nav-number">9.</span> <span class="nav-text">保留CNAME文件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Hexo"><span class="nav-number">1.</span> <span class="nav-text">安装Hexo</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化文件夹"><span class="nav-number">2.</span> <span class="nav-text">初始化文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建新的文章"><span class="nav-number">3.</span> <span class="nav-text">创建新的文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">4.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成静态页面"><span class="nav-number">5.</span> <span class="nav-text">生成静态页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布到github上"><span class="nav-number">6.</span> <span class="nav-text">发布到github上</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Github上创建库"><span class="nav-number">7.</span> <span class="nav-text">Github上创建库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改-config-yml文件"><span class="nav-number">8.</span> <span class="nav-text">修改_config.yml文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#保留CNAME文件"><span class="nav-number">9.</span> <span class="nav-text">保留CNAME文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改菜单"><span class="nav-number">10.</span> <span class="nav-text">修改菜单</span></a></li></ol></div>
             
 
           </div>

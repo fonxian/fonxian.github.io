@@ -1781,6 +1781,16 @@ d(A,B) = \sqrt { {(x _ 2 - x _ 1 ) ^ 2} + {(y _ 2 - y _ 1 ) ^ 2} }</script><h3 i
 <p>修改_config.yml</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">url: http://www.coffejoy.com</div><div class="line">Plugins:</div><div class="line">  hexo-generator-cname</div></pre></td></tr></table></figure>
 <p><code>hexo -g</code>、<code>hexo -d</code>，之后，Github上会生成一个内容为www.coffejoy.com的CNAME文件</p>
+<h3 id="修改菜单"><a href="#修改菜单" class="headerlink" title="修改菜单"></a>修改菜单</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new page &apos;diy&apos; #创建diy子目录</div></pre></td></tr></table></figure>
+<p><strong>在菜单中添加链接</strong></p>
+<p>编辑主题的_config.yml，在menu中的添加如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: /</div><div class="line">  archives: /archives</div><div class="line">  tags: /tags</div><div class="line">  about: /about</div><div class="line">  diy: /diy</div></pre></td></tr></table></figure>
+<p><strong>在menu中的配置图标:</strong></p>
+<p>编辑主题的_config.yml</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">menu_icons:</div><div class="line">  enable: true</div><div class="line">  home: home</div><div class="line">  about: user</div><div class="line">  categories: th</div><div class="line">  tags: tags</div><div class="line">  archives: archive</div><div class="line">  diy: heartbeat</div></pre></td></tr></table></figure>
+<p><strong>新添加的菜单需要翻译对应的中文</strong></p>
+<p>打开<code>hexo&gt;theme&gt;next&gt;languages&gt;zh-Hans.yml</code>，在menu下添加：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">menu:</div><div class="line">  home: 首页</div><div class="line">  archives: 归档</div><div class="line">  categories: 分类</div><div class="line">  tags: 标签</div><div class="line">  about: 关于</div><div class="line">  diy: 我自己定义的菜单名</div></pre></td></tr></table></figure>
 
           
         
@@ -1867,22 +1877,13 @@ d(A,B) = \sqrt { {(x _ 2 - x _ 1 ) ^ 2} + {(y _ 2 - y _ 1 ) ^ 2} }</script><h3 i
           
 
           
-            
-            
-            <div class="site-state-item site-state-categories">
-              
-                <span class="site-state-item-count">1</span>
-                <span class="site-state-item-name">分类</span>
-              
-            </div>
-          
 
           
             
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
