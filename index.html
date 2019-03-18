@@ -915,11 +915,7 @@ J(\theta) = \frac 1 {2} \sum_{i=1}^{m} {(h _ \theta(x _ i) - y _ i)} ^ 2
       
         
           
-            <blockquote>
-<p>在一秒钟内看到本质的人和花半辈子也看不清一件事本质的人,自然是不一样的命运。</p>
-<p>——马里奥·普佐</p>
-</blockquote>
-<p>每当遇到Java面试，“锁”是个必然会被提到的东西。那么，在面试中，谈“锁”都会谈论些什么呢，诸位看官又是否对“锁”有足够的了解？</p>
+            <p>每当遇到Java面试，“锁”是个必然会被提到的东西。那么，在面试中，谈“锁”都会谈论些什么呢，诸位看官又是否对“锁”有足够的了解？</p>
 <p>本文旨在剖析锁的底层原理，以及锁的应用场景。</p>
 <h3 id="一、Synchronized"><a href="#一、Synchronized" class="headerlink" title="一、Synchronized"></a>一、Synchronized</h3><h4 id="1、一道面试题"><a href="#1、一道面试题" class="headerlink" title="1、一道面试题"></a>1、一道面试题</h4><p>同一个对象在A、B两个线程中分别访问该对象的两个同步方法writer和reader，是否会产生互斥？</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LockDemo</span></span>&#123;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> a = <span class="number">0</span>;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">writer</span><span class="params">()</span></span>&#123;</div><div class="line">		sleep(<span class="number">10</span>);</div><div class="line">		a++;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">reader</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">int</span> i = a;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">	</div><div class="line">        Test test = <span class="keyword">new</span> Test();</div><div class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</div><div class="line">            test.writer();</div><div class="line">        &#125;).start();</div><div class="line">        </div><div class="line">        sleep(<span class="number">1</span>);</div><div class="line">        </div><div class="line">        <span class="keyword">new</span> Thread(() -&gt; &#123;</div><div class="line">            test.reader();</div><div class="line">        &#125;).start();</div><div class="line"></div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
@@ -1024,117 +1020,6 @@ J(\theta) = \frac 1 {2} \sum_{i=1}^{m} {(h _ \theta(x _ i) - y _ i)} ^ 2
 <h4 id="2、偏向锁"><a href="#2、偏向锁" class="headerlink" title="2、偏向锁"></a>2、偏向锁</h4><p>因大多数情况，锁不存在多线程竞争，且总由同一个线程多次获得。为使获得锁的代价更低而引入。</p>
 <h4 id="3、轻量级锁"><a href="#3、轻量级锁" class="headerlink" title="3、轻量级锁"></a>3、轻量级锁</h4><h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p>1、<a href="http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/file/9ce27f0a4683" target="_blank" rel="external">JDK8 HotSpot虚拟机源码</a></p>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://www.coffejoy.com/2018/11/23/Java内存对齐/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="fonxian">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/fonxian.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="coffejoy">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/23/Java内存对齐/" itemprop="url">Java内存对齐</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-23T00:28:31+08:00">
-                2018-11-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -1870,7 +1755,7 @@ d(A,B) = \sqrt { {(x _ 2 - x _ 1 ) ^ 2} + {(y _ 2 - y _ 1 ) ^ 2} }</script><h3 i
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
